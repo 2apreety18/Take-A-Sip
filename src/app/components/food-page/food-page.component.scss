@@ -1,0 +1,81 @@
+.food-page-card-title {
+    font-family: "Pacifico", cursive;
+    text-align: center;
+}
+  
+  .food-page-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1rem;
+  }
+ 
+  
+  .food-page-card img {
+    object-fit: contain;
+    max-height: 250px;
+  }
+
+  .select-card {
+    text-align: center;
+    margin: 1rem;
+  }
+ 
+  label {
+    font-weight:bold;
+    margin: 1rem;
+  }
+  .qty {
+    width: 5rem;
+    margin: 1rem;
+    font-weight: lighter;
+  }
+
+  .instructions {
+    margin-bottom: 0;
+    margin-right: 10.5rem;
+  }
+  
+  .chip {
+    padding: 0 20px;
+    height: 3rem;
+    margin: 0.5rem;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    display: inline-block;
+
+  }
+  
+  .chip-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+
+ button {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    width: fit-content;
+    font-weight: lighter;
+    background-color: lightblue;
+    border: 1px solid lightblue;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s; 
+ }
+  
+ .action {
+    display: inline;
+    text-align: center;
+ }
+  @media (min-width: 900px) {
+    .product-page-card img {
+      object-fit: contain;
+    }
+  
+    .chip:hover {
+      cursor: pointer;
+  }
+  
+  }

@@ -1,0 +1,43 @@
+
+.container {
+    overflow-x: auto;
+    text-align: center;
+
+}
+
+.center, h3,h2 {
+    margin: 4rem;
+    text-align: center;
+
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 1rem;
+  }
+  
+  button {
+    padding: 0.5rem;
+    width: fit-content;
+    font-weight: lighter;
+    border: 1px solid white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s; 
+  }
+  .btns {
+    float: inline-start;
+  }
+
+  .empty-btn {
+    background-color: red;
+    color: white;
+  }
+  .order-btn {
+    background-color: green;
+    color: white;
+  }

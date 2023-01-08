@@ -1,0 +1,30 @@
+.card {
+   // background-color: #FDF6EB;
+   background-color: white;
+   color: black;
+   font-family: 'Pacifico', cursive;
+   text-align: center;
+   display: inline-block;
+   margin: 1rem;
+   padding: 1rem;
+   border: 1px solid #F5F5F5;
+   border-radius: 1rem;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+   transition: 0.3s; 
+ }
+
+ .card img {
+   object-fit: contain;
+   max-height: 260px;
+   height: 50%;
+   width: 50%;
+ }
+ 
+ .card:hover {
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+ }
+  
+
+  
