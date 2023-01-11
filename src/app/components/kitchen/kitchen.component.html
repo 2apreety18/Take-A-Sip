@@ -1,0 +1,50 @@
+<div class ="main-container">
+    <div class="container">
+        <h2>Orders <span *ngIf="orders.length > 0"> - {{orders.length}}</span></h2>
+        <div
+          cdkDropList
+          #orderList="cdkDropList"
+          [cdkDropListData]="orders"
+          [cdkDropListConnectedTo]="[progressList]"
+          class="list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="box" *ngFor="let item of orders" cdkDrag>
+            {{item}}
+            <!-- {{item.name!}}
+            {{item.work!}} -->
+        </div>
+        </div>
+    </div>
+    
+    
+    <div class="container">
+        <h2>In progress<span *ngIf="inProgress.length > 0"> - {{inProgress.length}}</span></h2>
+      
+        <div
+          cdkDropList
+          #progressList="cdkDropList"
+          [cdkDropListData]="inProgress"
+          [cdkDropListConnectedTo]="[readyList]"
+          class="list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
+        </div>
+    </div>
+      
+      <div class="container">
+        <h2>Ready <span *ngIf="ready.length > 0"> - {{ready.length}}</span></h2>
+        <div
+          cdkDropList
+          #readyList="cdkDropList"
+          [cdkDropListData]="ready"
+          [cdkDropListConnectedTo]="[progressList]"
+            class="list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="box" *ngFor="let item of ready" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+</div>
+
+
+  
+  

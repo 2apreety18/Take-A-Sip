@@ -1,0 +1,42 @@
+<div class="food-page-card">
+  <h2 class="food-page-card-title"> {{ food?.name }}</h2>
+  <img [src]="imageUrl" />
+
+  <div class="select-card">
+
+    <h4>Select your flavor:</h4>
+    <div class="chip-list">
+      <div
+        *ngFor="let flavor of food?.flavors"
+        class="chip"
+        [style.background-color]="flavor.color"
+        (click)="
+          updateSelectedFoodAttributes(
+            flavor          
+          )
+        "
+      >
+        {{ flavor.name }}
+      </div>
+    </div>
+
+    <label>Quantity:</label>
+    <input type="number" [(ngModel)]="food!.qty" class="qty">
+
+    <h5 class = "instructions">Special Instructions</h5>
+    <form [formGroup]= "noteAreaForm">
+      <textarea type ="text"[(ngModel)]="food!.note" class ="note-area" formControlName="noteArea" name="noteName" rows="5" cols="33"></textarea>
+    </form>
+
+  </div>
+
+  <!-- FORCED ASSIGNED -->
+  <div class="action">
+    <button (click)="addToList(food!,selectedAttributes)"> ADD TO LIST </button> 
+    <button routerLink= "/" > BACK </button> 
+  </div>
+  
+
+  
+
+</div>

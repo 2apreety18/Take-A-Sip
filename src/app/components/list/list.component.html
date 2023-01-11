@@ -1,0 +1,57 @@
+<h2>Order List</h2>
+<div class="container">
+<ng-container *ngIf="listItems.length !=0">
+  <div class="center">
+    <div class="cart-table">
+        <table>
+          <thead>
+              <tr>
+                  <th>Sr.No</th>
+                  <th>Food Name</th>
+                  <!-- <th>Image</th> -->
+                  <th>Flavor</th>
+                  <th>Quantity</th>
+                  <th>Note</th>
+                  <!-- <th>Total</th> -->
+                  <th>Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of listItems; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{item.name}}</td>
+                  <!-- <td><img style="width: 120px;" src="{{item.imageUrls}}" alt=""></td> -->
+                  <td style="width: 25%;">{{item.selectedFlavor}}</td>
+                  <!-- <th style="width: 12%;">{{item.price}}</th> -->
+                  <td style="width: 12%;">{{item.qty}}</td>
+                  <td style="width: 12%;">{{item.note}}</td>
+                  <td>
+                      <fa-icon (click)="removeItem(item)" [icon]="trash"></fa-icon>
+                  </td>
+              </tr>
+              <tr>
+                  <td class = "btns"colspan="4"></td>
+                  <td><button (click)="emptyList()" class="empty-btn">EMPTY LIST</button></td>
+                  <td><button routerLink="/" class="add-btn">ADD MORE</button></td>
+                  <td><button class="order-btn">PROCEED TO ORDER</button></td>
+                  <!-- <td><strong>Grand Total : ${{grandTotal}}</strong></td> -->
+              </tr>
+          </tbody>
+      </table>
+
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="listItems.length ==0">
+      <div class="center">
+          <h4>Your list is empty!</h4>
+          <h6>Add food to it now</h6>
+          <button routerLink="/" class="btn btn-primary">Order Your Food</button>
+      </div>
+</ng-container>
+</div>
+
+  
+ 
+
