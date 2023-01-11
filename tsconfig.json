@@ -4,6 +4,9 @@
   "compilerOptions": {
     "strictPropertyInitialization": false,
     "baseUrl": "./",
+    "paths": {
+      "tslib" : ["./node_modules/tslib/tslib.d.ts"]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
