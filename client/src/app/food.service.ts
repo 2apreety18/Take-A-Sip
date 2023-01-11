@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class FoodService {
 
-  url = 'http://localhost:3000/orders';  
+  url = 'http://localhost:6789/orders';  
   
   listItems: Food[] = [];
   selectedAttribute:  SelectedFoodAttribute[] = [];
