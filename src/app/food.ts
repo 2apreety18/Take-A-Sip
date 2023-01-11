@@ -7,6 +7,6 @@ export interface Food {
     imageUrls: string[];
     flavors: Flavor[];
     selectedFlavor: string | undefined;
-    qty: number;
-    note: string;
+    qty?: number;
+    note?: string;
 }

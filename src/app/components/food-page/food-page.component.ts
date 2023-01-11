@@ -5,6 +5,7 @@ import { Flavor } from 'src/app/flavor';
 import { SelectedFoodAttribute } from 'src/app/selectedFoodAttribute';
 import { FoodService } from 'src/app/food.service';
 import { FormBuilder } from '@angular/forms';
+import { NotificationService } from 'src/app/notification.service';
 
 @Component({
   selector: 'app-food-page',
@@ -23,7 +24,7 @@ export class FoodPageComponent implements OnInit{
   });
   
 
-  constructor(private route: ActivatedRoute,private foodService: FoodService, private fb: FormBuilder) {}
+  constructor(private route: ActivatedRoute,private foodService: FoodService, private fb: FormBuilder,private notificationService : NotificationService) {}
 
   ngOnInit() {
 
@@ -37,18 +38,19 @@ export class FoodPageComponent implements OnInit{
     }
   }
 
+  // getFood(): void {
+  //   const id = Number(this.route.snapshot.paramMap.get('id'));
+  //   this.foodService
+  //     .getFood(id)
+  //     .subscribe((food) => (this.food = food)); 
+  // }
+
   getFood(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.foodService
-      .getFood(id)
+    .getFood(id)
       .subscribe((food) => (this.food = food)); 
   }
-
-  // getflavorOptions(): string {
-  //   return (
-  //     this.food?.flavors?.map((flavor) => flavor.name).join('|') ?? 'yolii'
-  //   );
-  // }
 
 
   setImageUrl(flavor: Flavor): void {
@@ -78,7 +80,8 @@ export class FoodPageComponent implements OnInit{
 
   addToList(food: Food, selectedAttributes: SelectedFoodAttribute) {
     this.foodService.addToList(food, selectedAttributes);
-    window.alert('This order has been added to the list!');
+   // window.alert('This order has been added to the list!');
+    this.notificationService.notifySuccess('Order added to the list!','☕️ SUCCESS')
     this.noteAreaForm.reset();
   }
   

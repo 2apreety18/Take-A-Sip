@@ -10,7 +10,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^15.0.0",
+    "@angular/animations": "^15.0.4",
     "@angular/cdk": "^15.0.4",
     "@angular/common": "^15.0.0",
     "@angular/compiler": "^15.0.0",
@@ -23,8 +23,8 @@
     "@fortawesome/angular-fontawesome": "^0.12.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "ngx-toastr": "^16.0.2",
     "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
@@ -38,6 +38,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "tslib": "^2.4.1",
     "typescript": "~4.8.2"
   }
 }

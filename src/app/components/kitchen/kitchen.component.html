@@ -9,9 +9,12 @@
           class="list"
           (cdkDropListDropped)="drop($event)">
           <div class="box" *ngFor="let item of orders" cdkDrag>
-            {{item}}
-            <!-- {{item.name!}}
-            {{item.work!}} -->
+            {{item.user.firstName}}<br>
+            Room: {{item.user.room}}<br>
+             <p  *ngFor="let food of item.foods">
+              {{food.selectedFlavor | uppercase}} {{food.name}} Qty: {{food.qty}} <br>
+               Note: {{ food.note }}
+             </p>
         </div>
         </div>
     </div>
@@ -27,7 +30,14 @@
           [cdkDropListConnectedTo]="[readyList]"
           class="list"
           (cdkDropListDropped)="drop($event)">
-          <div class="box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
+          <div class="box" *ngFor="let item of inProgress" cdkDrag>
+            {{item.user.firstName}}<br>
+            Room: {{item.user.room}}<br>
+             <p  *ngFor="let food of item.foods">
+              {{food.selectedFlavor | uppercase}} {{food.name}} Qty: {{food.qty}} <br>
+               Note: {{ food.note }}
+             </p>
+          </div>
         </div>
     </div>
       
@@ -40,7 +50,14 @@
           [cdkDropListConnectedTo]="[progressList]"
             class="list"
           (cdkDropListDropped)="drop($event)">
-          <div class="box" *ngFor="let item of ready" cdkDrag>{{item}}</div>
+          <div class="box" *ngFor="let item of ready" cdkDrag>
+            {{item.user.firstName}}<br>
+            Room: {{item.user.room}}<br>
+             <p  *ngFor="let food of item.foods">
+              {{food.selectedFlavor | uppercase}} {{food.name}} Qty: {{food.qty}} <br>
+               Note: {{ food.note }}
+             </p>
+          </div>
         </div>
       </div>
 </div>

@@ -35,10 +35,7 @@
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
               "node_modules/ngx-toastr/toastr.css",
-=======
->>>>>>> ce144211e056a675ca12d0f5bfb28e761674a0cd
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],

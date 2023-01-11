@@ -1,31 +1,73 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { FOODS } from './food-types';
 import { Food } from './food';
 import { SelectedFoodAttribute } from './selectedFoodAttribute';
+import { OrderList } from './orderlist';
+
+import { HttpClient } from '@angular/common/http'
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodService {
+
+  url = 'http://localhost:3000/orders';  
   
   listItems: Food[] = [];
   selectedAttribute:  SelectedFoodAttribute[] = [];
+//private http: HttpClient
+
+  constructor(private http: HttpClient) { }
+
+  //Data passing with Api
+  getAllOrders(): Observable<OrderList[]> {
+   return this.http.get<OrderList[]>(this.url);
+  
+  }
+  
+  //param: form value,listItem
+  addOrder () : Observable<OrderList> {
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+    return this.http.post<OrderList>(this.url, httpOptions);
+  }
 
 
-  constructor() { }
+  updateStatus (id: string, status: string) : Observable<OrderList> {
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
 
+    return this.http.put<OrderList>(this.url + `/${id}/${status}`, {}, httpOptions);
+  }
+  
+  //Food Sections
   getFoods(): Food[] {
     return FOODS;
   }
 
-  getFood(id: number): Observable<Food | undefined> {
+   getFood(id: number): Observable<Food | undefined> {
     const food = FOODS.find(food => food.id === id);
-    return of(food);
+    console.log(food)
+    return of(food);    
   }
+
+  // getFood(id: number): Food | undefined{
+  //   const food = FOODS.find(food => food.id === id);
+  //  // console.log(food);
+  //   return food;
+  // }
+
  
-  //For List
+ 
+  //List Part
   findItemById(listItems: any, id: number,selectedFlavor: string) {
     return listItems.find(function(item: { id: number,selectedFlavor: string }) {
       return item.id === id && item.selectedFlavor === selectedFlavor;
@@ -65,9 +107,10 @@ export class FoodService {
 
   clearList() {
     this.listItems = [];
+    console.log(this.listItems)
     return this.listItems;
   }
- 
+  
 
 
 }
