@@ -23,7 +23,11 @@ const UserSchema = new Schema({
         // required: true,
         default:'',
         lowercase: true
-    },orderfor: {
+    },
+    orderfor: {
+        type: String,
+    },
+    usertype: {
         type: String,
     }
   

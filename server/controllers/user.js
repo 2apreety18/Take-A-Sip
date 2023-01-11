@@ -1,40 +1,76 @@
-
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const User = require('./../models/user');
-const SECRET_KEY = process.env.SECRET_KEY || 'afia1234';
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const secret = 'afia1234';
 
 
-const create = async (req, res) => {
+async function register(req, res) {
   const { email, password } = req.body;
   const user = await User.findOne({ email: email });
-  if (user)
+  if (user){
     return res
-      .status(409)
-      .send({ error: '409', message: 'User already exists' });
+            .status(400)
+            .send({ error: '400', message: 'User already exists' });
+  }
   try {
-    if (password === '') throw new Error();
-    const hash = await bcrypt.hash(password, 10);
+    if (password === '') {
+      res.send("Invalid Password!")
+    }
     const newUser = new User({
-      ...req.body,
-      password: hash,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      designation: req.body.designation,
+      email: req.body.email,
+      password: await bcrypt.hash(password, 8)
     });
     const { _id } = await newUser.save();
-    const accessToken = jwt.sign({ _id }, SECRET_KEY);
-    res.status(201).send({ accessToken });
+    const accessToken = jwt.sign({ _id }, secret, { expiresIn: "7d" });
+    res.setHeader("Authorization", "Bearer " + accessToken);
+    res
+      .status(200)
+      .send({ error: '200', message: 'Successfully added user',newUser})
   } catch (error) {
-    res.status(400).send({ error, message: 'Could not create user' });
+    res
+      .status(400)
+      .send({ error, message: 'Could not create user' });
+      console.log(error)
   }
 };
 
-const login = async (req, res) => {
-  const { email, password } = req.body;
+
+async function login (req, res){
   try {
-    const user = await User.findOne({ email: email });
-    const validatedPass = await bcrypt.compare(password, user.password);
-    if (!validatedPass) throw new Error();
-    const accessToken = jwt.sign({ _id: user._id }, SECRET_KEY);
-    res.status(200).send({ accessToken });
+    const { email, password } = req.body;
+    if (!email) {
+      res
+        .status(401)
+        .send("Invalid email!");
+    } else if (!password)  {
+      res
+        .status(401)
+        .send("Invalid password!");
+    } 
+    
+    const user = await User.findOne({ email: email }); 
+    if(user) {
+      const checkPass = await bcrypt.compare(password, user.password);
+      if (checkPass) {
+        const accessToken = jwt.sign({ _id: user._id }, secret, { expiresIn: "7d" });
+        res
+          .setHeader("Authorization", "Bearer " + accessToken)
+          .status(200)
+          .send({ error: '200', message: 'Successfully LOGGED IN',user});
+      } else {
+        res
+          .status(401)
+          .send("Incorrect credentials.");
+    }
+    } else {
+      res
+        .status(403)
+        .send("You are not registered yet.");
+    }
+    
   } catch (error) {
     res
       .status(401)
@@ -42,18 +78,38 @@ const login = async (req, res) => {
   }
 };
 
-const profile = async (req, res) => {
+async function registerAdmin (req, res) {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email: email });
+  if (user){
+    return res
+            .status(400)
+            .send({ error: '400', message: 'User already exists' });
+  }
   try {
-    const { _id, firstName, lastName } = req.user;
-    const user = { _id, firstName, lastName };
-    res.status(200).send(user);
-  } catch {
-    res.status(404).send({ error, message: 'Profile not found' });
+    if (password === '') {
+      res.send("Invalid Password!")
+    }
+    const newUser = new User({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      designation: req.body.designation,
+      email: req.body.email,
+      password: await bcrypt.hash(password, 8),
+      usertype: 'admin'
+    });
+    const { _id } = await newUser.save();
+    const accessToken = jwt.sign({ _id }, secret, { expiresIn: "7d" });
+    res.setHeader("Authorization", "Bearer " + accessToken);
+    res
+      .status(200)
+      .send({ error: '200', message: 'Successfully added user',newUser})
+  } catch (error) {
+    res
+      .status(400)
+      .send({ error, message: 'Could not create user' });
+      console.log(error)
   }
 };
 
-const logout = (req, res) => {
-  
-};
-
-module.exports = { create, login, profile, logout };
+module.exports = { register, login, registerAdmin };

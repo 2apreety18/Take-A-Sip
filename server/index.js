@@ -5,8 +5,13 @@ const router = require('./router');
 const app = express();
 const PORT = 6789;
 
+const corsOptions = {
+  origin: 'http://localhost:6789',
+  credentials: true,
+  exposedHeaders: "Authorization",
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(router);
 

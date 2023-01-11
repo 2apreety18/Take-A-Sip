@@ -1,21 +1,36 @@
 const jwt = require('jsonwebtoken');
 const User = require('./../models/user');
-const SECRET_KEY = process.env.SECRET_KEY || 'afia1234';
+const secret = 'afia1234';
 
 
 const authMiddleware = async (req, res, next) => {
   const authHeaders = req.headers['authorization'];
-  if (!authHeaders) return res.sendStatus(403);
-  const token = authHeaders.split(' ')[1];
+  if (!authHeaders) {
+    return res
+            .status(403)
+            .send("You are not authorized!");
+  }
 
+  const token = authHeaders.split(' ')[1];
   try {
-    const { _id } = jwt.verify(token, SECRET_KEY);
+    const { _id } = jwt.verify(token, secret);
     const user = await User.findOne({ _id });
-    if (!user) return res.sendStatus(401);
-    req.user = user;
-    next();
+    if (user){
+      req.user = user;
+      next();
+    } else {
+      return res
+              .status(401)
+              .send('You are not logged in!')
+    }
+  
   } catch (error) {
-    res.sendStatus(401);
+    if(error instanceof jwt.TokenExpiredError) {
+      res
+        .status(401)
+        .send('Access token has expired.');
+    }
+    res.status(500);
   }
 };
 
