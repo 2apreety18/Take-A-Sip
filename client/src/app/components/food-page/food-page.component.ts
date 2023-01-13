@@ -1,5 +1,5 @@
 import { Component, OnInit} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Food } from 'src/app/food';
 import { Flavor } from 'src/app/flavor';
 import { SelectedFoodAttribute } from 'src/app/selectedFoodAttribute';
@@ -23,8 +23,11 @@ export class FoodPageComponent implements OnInit{
     noteArea: ''
   });
   
+  
+ 
 
-  constructor(private route: ActivatedRoute,private foodService: FoodService, private fb: FormBuilder,private notificationService : NotificationService) {}
+
+  constructor(private route: ActivatedRoute,private foodService: FoodService, private fb: FormBuilder,private notificationService : NotificationService, private authRoute: Router) {}
 
   ngOnInit() {
 
@@ -35,6 +38,15 @@ export class FoodPageComponent implements OnInit{
     );
     if (this.selectedAttributes?.flavor) {
       this.setImageUrl(this.selectedAttributes.flavor);
+    }
+
+    const userStr = localStorage.getItem('user');
+    const user = userStr ? JSON.parse(userStr) : null;
+
+    if (!user) {
+      this.authRoute.navigate(['login']);
+    } else if (user.usertype === 'admin') {
+      this.authRoute.navigate(['kitchen']);
     }
   }
 
@@ -83,6 +95,16 @@ export class FoodPageComponent implements OnInit{
    // window.alert('This order has been added to the list!');
     this.notificationService.notifySuccess('Order added to the list!','☕️ SUCCESS')
     this.noteAreaForm.reset();
+  }
+  
+  plus(){
+  //  this.food?.qty = this.food?.qty+1;
+  }
+  minus(){
+    // if(this.food?.qty != 0)
+    // {
+    //   this.food?.qty = this.food?.qty-1;
+    // }
   }
   
 

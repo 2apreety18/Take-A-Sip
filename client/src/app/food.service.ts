@@ -5,7 +5,7 @@ import { Food } from './food';
 import { SelectedFoodAttribute } from './selectedFoodAttribute';
 import { OrderList } from './orderlist';
 
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 
 @Injectable({
@@ -23,8 +23,14 @@ export class FoodService {
 
   //Data passing with Api
   getAllOrders(): Observable<OrderList[]> {
-   return this.http.get<OrderList[]>(this.url);
-  
+    const token = localStorage.getItem('accessToken');
+    const httpOptions = {
+      headers: {
+        'Authorization': token ? token : ''
+      }
+    }
+
+    return this.http.get<OrderList[]>(this.url, httpOptions);
   }
   
   //param: form value,listItem
@@ -39,9 +45,11 @@ export class FoodService {
 
 
   updateStatus (id: string, status: string) : Observable<OrderList> {
+    const token = localStorage.getItem('accessToken');
     const httpOptions = {
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': token ? token : ''
       }
     };
 

@@ -1,18 +1,16 @@
-<h2>Order List</h2>
 <div class="container">
 <ng-container *ngIf="listItems.length !=0">
-  <div class="center">
-    <div class="cart-table">
+    <!-- 
+          <div class="center">
+<div class="cart-table">
         <table>
           <thead>
               <tr>
                   <th>Sr.No</th>
                   <th>Food Name</th>
-                  <!-- <th>Image</th> -->
                   <th>Flavor</th>
                   <th>Quantity</th>
                   <th>Note</th>
-                  <!-- <th>Total</th> -->
                   <th>Action</th>
               </tr>
           </thead>
@@ -20,9 +18,7 @@
               <tr *ngFor="let item of listItems; let i = index">
                   <td>{{i+1}}</td>
                   <td>{{item.name}}</td>
-                  <!-- <td><img style="width: 120px;" src="{{item.imageUrls}}" alt=""></td> -->
                   <td style="width: 25%;">{{item.selectedFlavor}}</td>
-                  <!-- <th style="width: 12%;">{{item.price}}</th> -->
                   <td style="width: 12%;">{{item.qty}}</td>
                   <td style="width: 12%;">{{item.note}}</td>
                   <td>
@@ -34,13 +30,41 @@
                   <td><button (click)="emptyList()" class="empty-btn">EMPTY LIST</button></td>
                   <td><button routerLink="/" class="add-btn">ADD MORE</button></td>
                   <td><button routerLink="/order" class="order-btn">PROCEED TO ORDER</button></td>
-                  <!-- <td><strong>Grand Total : ${{grandTotal}}</strong></td> -->
               </tr>
           </tbody>
-      </table>
-
-    </div>
+      </table>  
+    </div> 
   </div>
+-->
+
+    <!-- <div class="card" *ngFor="let item of listItems; let i = index">
+        <span>{{item.selectedFlavor | uppercase}}</span>
+        <span>{{item.name}}</span> 
+        <span><fa-icon (click)="removeItem(item)" [icon]="trash"></fa-icon></span>
+    </div> -->
+
+    <div class="card-container" *ngFor="let item of listItems; let i = index">
+        <div class="card">
+            <div class="card-info">
+                <div class="right-container">
+                   Qty: {{item.qty}} 
+                </div>
+                <h2>{{item.name}}</h2>
+                <h5>Flavor: {{item.selectedFlavor | uppercase}}</h5>
+                <h4>{{item.note}}</h4>
+                <button class="btn remove"><fa-icon (click)="removeItem(item)" [icon]="trash"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div> 
+    <div class="action-area">
+        <div class="action-area-procceed">
+            <button routerLink="/order" class="order-btn">ORDER --> </button>
+            <button routerLink="/" class="add-btn">+ MORE</button>
+            <button (click)="emptyList()" class="empty-btn"><fa-icon [icon]="trash"></fa-icon> LIST</button>
+
+        </div>
+    </div>
 </ng-container>
 
 <ng-container *ngIf="listItems.length ==0">
@@ -51,7 +75,6 @@
       </div>
 </ng-container>
 </div>
-
   
  
 

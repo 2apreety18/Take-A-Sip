@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
+
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -20,6 +20,8 @@ import { ListComponent } from './components/list/list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { KitchenComponent } from './components/kitchen/kitchen.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { OrderFormComponent } from './components/order-form/order-form.component
     FoodPageComponent,
     ListComponent,
     KitchenComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ export const FOODS: Food[] = [
       ],
       selectedFlavor: '',
       qty: 1,
-      note: 'e.g. sugar 2 teaspoon(tsp.) ...'
+      note: ''
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ export const FOODS: Food[] = [
       ],
       selectedFlavor: '',
       qty: 1,
-      note: 'e.g. sugar 2 teaspoon(tsp.) ...'
+      note: ''
     },
   ];
   

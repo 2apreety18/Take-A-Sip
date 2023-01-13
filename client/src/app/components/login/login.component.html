@@ -1,0 +1,21 @@
+<div class="login-box">
+    <!-- <div class="logo"></div> -->
+    <h2>LOG IN</h2>
+    <form [formGroup]= "loginForm">
+      <div class="user-box">
+        <input type="text" name="email" required="" formControlName="email">
+        <label>Email</label>
+      </div>
+      <div class="user-box">
+        <input type="password" name="password" required="" formControlName="password">
+        <label>Password</label>
+      </div>
+      <a (click)="login()">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        SUBMIT
+      </a>
+    </form>
+  </div>

@@ -1,3 +1,9 @@
+<div class="topsec">
+  <button id="refresh" (click)="refresh()">
+    <fa-icon  [icon]="rotate"></fa-icon>  Refresh
+  </button>
+  <h5>Last updated {{refreshTime}}</h5>
+</div>
 <div class ="main-container">
     <div class="container">
         <h2>Orders <span *ngIf="orders.length > 0"> - {{orders.length}}</span></h2>

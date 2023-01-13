@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'take-a-sip';
+
+  loggedIn = false;
+
+  handleAuth(state: boolean) {
+    this.loggedIn = state;
+  }
 }
+

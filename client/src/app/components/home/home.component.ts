@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  title = 'Your own mini cafe';
-  subtitle = 'What do you want to drink right now?';
+export class HomeComponent implements OnInit {
+  title = 'What can we get for you?';
+  subtitle = '';
+
+  constructor (private route: Router) {}
+
+  ngOnInit() {
+    const userStr = localStorage.getItem('user');
+    const user = userStr ? JSON.parse(userStr) : null;
+
+    if (!user) {
+      this.route.navigate(['login']);
+    } else if (user.usertype === 'admin') {
+      this.route.navigate(['kitchen']);
+    }
+  }
 }

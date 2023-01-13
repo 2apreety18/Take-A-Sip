@@ -1,11 +1,11 @@
-
 .container {
-    overflow-x: auto;
-    text-align: center;
-
+  overflow: auto;
+  max-height: 100vh;
 }
 
-.center, h3,h2 {
+
+
+.center, h3 {
     margin: 4rem;
     text-align: center;
 
@@ -21,23 +21,104 @@ table {
   }
   
   button {
-    padding: 0.5rem;
-    width: fit-content;
-    font-weight: lighter;
-    border: 1px solid white;
-    border-radius: 1rem;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s; 
-  }
-  .btns {
-    float: inline-start;
-  }
+    // padding: 0.5rem;
+    // width: fit-content;
+    // font-weight: lighter;
+    // border: 1px solid white;
+    // border-radius: 1rem;
+    // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    // transition: 0.3s; 
 
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 10px;
+    padding: 12px 25px;
+    letter-spacing: 1px;
+  }
+  
+  .action-area {
+    background-color: #e0e0e0;
+    width: 23rem;
+    height: 3vh;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    padding: 1rem;
+    padding-bottom: 2rem;
+  }
+.add-btn {
+  background-color: #0D6CE3;
+  margin-right: 0.5rem;
+}
+  
   .empty-btn {
     background-color: red;
     color: white;
   }
   .order-btn {
-    background-color: green;
+    background-color: #76A34F;
     color: white;
+    margin-right: 0.5rem;
+  }
+  
+  //card 
+  .card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    margin: 0.5rem;
+    overflow: hidden;
+    width: 95%;
+  }
+  
+  .card h5 {
+    opacity: 0.6;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .card h2 {
+    letter-spacing: 1px;
+  }
+  
+  .card-info {
+    padding: 30px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .right-container {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    text-align: right;
+    width: 150px;
+  }
+ 
+  
+  .btn {
+    background-color: #A55B41;
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 16px;
+    padding: 12px 25px;
+    letter-spacing: 1px;
+  }
+  .remove {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+  }
+  
+  
+  @media screen and (max-width: 480px) {
+  
+    
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FoodService } from 'src/app/food.service';
-import { FormBuilder, FormGroup,FormControl, Validators,AbstractControl, ValidationErrors } from "@angular/forms";
+import { FormBuilder} from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { NotificationService } from 'src/app/notification.service';
 
@@ -14,10 +14,6 @@ export class OrderFormComponent {
   
   listItems = this.listService.getListItems();
   orderForm = this.fb.group({
-    firstName:'',
-    lastName:'',
-    designation:'',
-    email:'',
     room:'',
     order:''
   });
@@ -34,6 +30,7 @@ export class OrderFormComponent {
     });
     this.notificationService.notifySuccess('Successfully submitted your order!','Congrats 🎉')
     this.orderForm.reset();
+    this.listItems.length = 0;
     // console.log(formValue);
     // console.log(this.listItems);
 

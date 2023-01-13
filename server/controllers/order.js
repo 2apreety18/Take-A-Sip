@@ -2,6 +2,7 @@ const Order = require("../models/order");
 
 async function getOrders(req, res) {
   try {
+    console.log(req.user);
     if (req.user && req.user.usertype === 'admin') {
       const orders = await Order.find({});
       res.status(200);
@@ -14,6 +15,17 @@ async function getOrders(req, res) {
     console.log(error);
   }
 }
+
+// async function getOrders(req, res) {
+//   try {
+//       const orders = await Order.find({});
+//       res.status(200);
+//       res.send(orders);
+//   } catch (error) {
+//     res.status(500);
+//     console.log(error);
+//   }
+// }
 
 async function postOrder(req, res) {
   try {

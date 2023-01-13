@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { OrderList } from 'src/app/orderlist';
 import { FoodService } from 'src/app/food.service';
+import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { formatDistance, subDays, subHours, subMinutes } from 'date-fns'
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-kitchen',
@@ -9,19 +14,36 @@ import { FoodService } from 'src/app/food.service';
   styleUrls: ['./kitchen.component.scss']
 })
 export class KitchenComponent implements OnInit {
+  rotate = faRotateRight;
+  trash = faTrashCan;
 
   orders: OrderList[] = [];
   inProgress: OrderList [] = [];
   ready: OrderList [] = [];
-  
-  constructor(private api: FoodService){}
+
+  savedTime = new Date();
+  refreshTime = formatDistance(
+    new Date(this.savedTime),
+    new Date(),
+   { addSuffix: true }
+  );
+
+  constructor(private api: FoodService,private route: Router){}
   
   ngOnInit() : void {
+    const userStr = localStorage.getItem('user');
+    const user = userStr ? JSON.parse(userStr) : null;
+    if (user.usertype !== 'admin') {
+      this.route.navigate(['home']);
+    }
     this.getOrders();
+    setInterval(() => this.refreshTime, 1000);
   }
   
+
   getOrders () : void {
     this.api.getAllOrders().subscribe(orders => {
+      this.savedTime = new Date();
       console.log("order", orders)
       this.orders = orders; 
       const created = orders.filter(order => order.status === 'created');
@@ -34,6 +56,10 @@ export class KitchenComponent implements OnInit {
       this.ready = ready;
     });
     console.log("hii",this.orders);
+  }
+
+  refresh() {
+    this.getOrders();
   }
 
   updateOrderStatus (id: string, status: string) {
@@ -57,10 +83,7 @@ export class KitchenComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
 
-     console.log(event.container.data);
-     //console.log(event.container.data);
-     event.container.data.forEach((eachOrder) => {
-        //console.log(eachOrder._id);
+         event.container.data.forEach((eachOrder) => {
         if(event.container.id == 'cdk-drop-list-1') {
           this.updateOrderStatus(eachOrder._id,'in-progress');
         }

@@ -3,6 +3,9 @@ export interface User {
     lastName: String,
     designation: String,
     email: String,
-    room: String,
-    orderfor?: String
+    password: String,
+    username: String,
+    room?: String,
+    orderfor?: String,
+    usertype?: String
 }

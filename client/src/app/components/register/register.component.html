@@ -1,0 +1,43 @@
+<div class="main-con">
+  <div class="left-con">
+    <h2 class= "logo"routerLink="/login"></h2>
+    <h2>Making<br>your office order<br> <span> Simpler </span></h2>
+  </div>
+  <div class="right-con">
+
+    <div class="login-box">
+      <h1><fa-icon [icon]="mugIcon"></fa-icon> Join Take A Sip</h1>
+      <h4>Already have an account? <span routerLink="/login">Login</span></h4>
+      <form [formGroup]= "regForm">
+        <div class="user-box">
+          <input type="text" name="firstName" required="" formControlName="firstName">
+          <label>First Name</label>
+        </div>
+        <div class="user-box">
+          <input type="text" name="lastName" required="" formControlName="lastName">
+          <label>Last Name</label>
+        </div>
+        <div class="user-box">
+          <input type="text" name="designation" required="" formControlName="designation">
+          <label>Designation</label>
+        </div>
+        <div class="user-box">
+          <input type="email" name="email" required="" formControlName="email">
+          <label>Email</label>
+        </div>
+        <div class="user-box">
+          <input type="password" name="password" required="" formControlName="password">
+          <label>Password</label>
+        </div>
+        <a (click)="register()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          SUBMIT
+        </a>
+      </form>
+    </div>
+
+  </div>
+</div>

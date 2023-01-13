@@ -16,26 +16,25 @@
           )
         "
       >
-        {{ flavor.name }}
+        {{ flavor.name | uppercase }}
       </div>
     </div>
 
-    <label>Quantity:</label>
-    <input type="number" [(ngModel)]="food!.qty" class="qty">
+    <!-- <label>Quantity:</label> -->
+    <span class="minus" (click)="minus()">-</span>
+    <input type="number" [(ngModel)]="food!.qty" value="1" class="qty">
+    <span class="plus" (click)="plus()">+</span>
 
     <h5 class = "instructions">Special Instructions</h5>
     <form [formGroup]= "noteAreaForm">
-      <textarea type ="text"[(ngModel)]="food!.note" class ="note-area" formControlName="noteArea" name="noteName" rows="5" cols="33"></textarea>
+      <textarea type ="text"[(ngModel)]="food!.note" placeholder="e.g. sugar 2 teaspoon(tsp.) ..." class ="note-area" formControlName="noteArea" name="noteName" rows="5" cols="33"></textarea>
     </form>
 
   </div>
 
   <div class="action">
-    <button (click)="addToList(food!,selectedAttributes)"> ADD TO LIST </button> 
-    <button routerLink= "/" > BACK </button> 
+    <button routerLink= "/home" > <-- </button> 
+    <button (click)="addToList(food!,selectedAttributes)" *ngIf="this.food?.qty != 0"> ADD TO LIST </button> 
   </div>
   
-
-  
-
 </div>

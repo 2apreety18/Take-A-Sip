@@ -5,6 +5,7 @@ const secret = 'afia1234';
 
 const authMiddleware = async (req, res, next) => {
   const authHeaders = req.headers['authorization'];
+  console.log(req.headers['Authorization'])
   if (!authHeaders) {
     return res
             .status(403)
