@@ -10,7 +10,7 @@ export class NotificationService {
   constructor(private toastr: ToastrService) { }
   
   notifySuccess(message: string | undefined, title: string | undefined){
-    this.toastr.success(message, title)
+    this.toastr.success(message, title,{positionClass: 'toast-bottom-left'})
   }
   
   notifyError(message: string | undefined, title: string | undefined){

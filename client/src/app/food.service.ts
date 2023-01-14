@@ -55,6 +55,17 @@ export class FoodService {
 
     return this.http.put<OrderList>(this.url + `/${id}/${status}`, {}, httpOptions);
   }
+
+  deleteOrder(id: string) : Observable<OrderList> {
+    const token = localStorage.getItem('accessToken');
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token ? token : ''
+      }
+    };
+    return this.http.delete<OrderList>(this.url + `/${id}`,httpOptions);
+  }
   
   //Food Sections
   getFoods(): Food[] {

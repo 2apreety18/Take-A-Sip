@@ -29,4 +29,5 @@ export interface OrderList {
     user : User;
     foods : Food[];
     status?: String;
+    orderfor: String;
 }

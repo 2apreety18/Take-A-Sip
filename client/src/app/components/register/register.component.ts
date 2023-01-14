@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { faMugHot } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit{
   mugIcon = faMugHot;
   regForm = this.fb.group({
     firstName: '',
@@ -20,6 +20,18 @@ export class RegisterComponent {
   });
    
   constructor(private fb: FormBuilder, private auth : AuthService, private router: Router){}
+
+  ngOnInit(): void {
+    const userStr = localStorage.getItem('user');
+    if (userStr) {
+      const user = JSON.parse(userStr);
+      if (user.usertype === 'admin') {
+        this.router.navigate(['kitchen'])
+      } else {
+        this.router.navigate(['home'])
+      }
+    }
+  }
   
   register() {
     const val = this.regForm.value;

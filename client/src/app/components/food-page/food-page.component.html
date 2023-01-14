@@ -34,7 +34,7 @@
 
   <div class="action">
     <button routerLink= "/home" > <-- </button> 
-    <button (click)="addToList(food!,selectedAttributes)" *ngIf="this.food?.qty != 0"> ADD TO LIST </button> 
+    <button (click)="addToList(food!,selectedAttributes)" *ngIf="isValidQty()"> ADD TO LIST </button> 
   </div>
   
 </div>

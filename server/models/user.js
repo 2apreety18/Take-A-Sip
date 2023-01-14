@@ -22,9 +22,6 @@ const UserSchema = new Schema({
         default:'',
         lowercase: true
     },
-    orderfor: {
-        type: String
-    },
     usertype: {
         type: String
     }

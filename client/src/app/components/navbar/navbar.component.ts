@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
   clipList = faClipboardList;
   
   loggedIn: boolean = false;
+  checkAdmin: boolean = false;
+
   user?: User;
   greetings?: String;
   
@@ -35,7 +37,7 @@ export class NavbarComponent implements OnInit {
     this.loggedIn = userStr ? true : false;
     this.user = userStr ? JSON.parse(userStr) : undefined;
     this.greetings = 'Hi ' + this.user?.lastName + '!';
-
+    this.checkAdmin = this.user?.usertype === 'admin' ? true : false;
   }
 
   logout() {

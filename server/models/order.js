@@ -19,6 +19,9 @@ const OrderSchema = new Schema({
       type: String,
       default: 'created'
     },
+    orderfor: {
+      type: String
+    },
     createdAt: {  
       type: Date,
       default: new Date

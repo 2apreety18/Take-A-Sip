@@ -5,8 +5,7 @@ import { FoodService } from 'src/app/food.service';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
-import { formatDistance, subDays, subHours, subMinutes } from 'date-fns'
-import { interval } from 'rxjs';
+import { formatDistance } from 'date-fns'
 
 @Component({
   selector: 'app-kitchen',
@@ -37,14 +36,13 @@ export class KitchenComponent implements OnInit {
       this.route.navigate(['home']);
     }
     this.getOrders();
-    setInterval(() => this.refreshTime, 1000);
+    setInterval(() => this.getRefreshTime(), 1000);
   }
   
 
   getOrders () : void {
     this.api.getAllOrders().subscribe(orders => {
       this.savedTime = new Date();
-      console.log("order", orders)
       this.orders = orders; 
       const created = orders.filter(order => order.status === 'created');
       this.orders = created;
@@ -73,6 +71,18 @@ export class KitchenComponent implements OnInit {
     this.api.updateStatus(id, status).subscribe(() => {});
   }
 
+  emptyList() {
+    this.ready.length = 0;    
+  }
+  removeOrder(id: string) {
+  //  let index = this.ready.indexOf(order);
+  //  this.ready.splice(index,1);
+    // const deleteReadyOrder = this.ready.filter(order => order._id !== order._id)
+    // this.ready = deleteReadyOrder;
+    this.api.deleteOrder(id).subscribe(() => {});
+    this.refresh();
+  }
+
  
   drop(event: CdkDragDrop<OrderList[]>) {
     if (event.previousContainer === event.container) {
@@ -96,7 +106,13 @@ export class KitchenComponent implements OnInit {
     
   }
 
+  getRefreshTime() {
+    const newTime = formatDistance(
+      new Date(this.savedTime),
+      new Date(),
+     { addSuffix: true }
+    );
 
-  
-
+    this.refreshTime = newTime;
+  }
 }

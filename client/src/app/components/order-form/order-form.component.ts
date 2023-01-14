@@ -23,7 +23,7 @@ export class OrderFormComponent {
 
   onSubmit(formValue: any) {
     //later: how to send form data to service
-    this.http.post('http://localhost:6789/orders', {user: formValue, foods: this.listItems, status: 'created'})
+    this.http.post('http://localhost:6789/orders', {user: formValue, foods: this.listItems, status: 'created', orderfor: formValue.order})
     .subscribe({
       next: (response) => console.log(response),
       error: (error) => console.log(error),

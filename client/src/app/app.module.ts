@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,7 +48,9 @@ import { RegisterComponent } from './components/register/register.component';
     BrowserAnimationsModule,
     DragDropModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatCardModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

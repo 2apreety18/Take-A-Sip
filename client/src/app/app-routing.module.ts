@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: "kitchen", component: KitchenComponent},
   {path: "food/:id", component: FoodPageComponent},
   {path: "order", component: OrderFormComponent},
- // {path: "list", component: ListComponent},
+  {path: "list", component: ListComponent},
   {path: "home", component: HomeComponent},
   {path: "**", component: HomeComponent}
 ];

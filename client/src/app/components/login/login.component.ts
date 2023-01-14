@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -9,7 +9,7 @@ import { User } from 'src/app/user';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
 loginForm = this.fb.group({
   email:'',
@@ -21,6 +21,20 @@ loginForm = this.fb.group({
 @Output() loginEvent = new EventEmitter();
  
 constructor(private fb: FormBuilder, private auth : AuthService, private router: Router){}
+
+
+ngOnInit(): void {
+  const userStr = localStorage.getItem('user');
+  if (userStr) {
+    const user = JSON.parse(userStr);
+    if (user.usertype === 'admin') {
+      this.router.navigate(['kitchen'])
+    } else {
+      this.router.navigate(['home'])
+    }
+  }
+}
+
 
 login() {
   const val = this.loginForm.value;

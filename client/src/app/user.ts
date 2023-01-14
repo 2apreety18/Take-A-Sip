@@ -6,6 +6,5 @@ export interface User {
     password: String,
     username: String,
     room?: String,
-    orderfor?: String,
     usertype?: String
 }

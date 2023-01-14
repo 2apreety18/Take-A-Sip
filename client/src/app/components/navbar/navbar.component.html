@@ -7,12 +7,12 @@
 
   </ul> -->
 
-  <ul>
-    <li><h2 class= "logo"routerLink=""><fa-icon [icon]="mugIcon"></fa-icon>
+  <ul >
+    <li *ngIf="loggedIn"><h2 class= "logo"routerLink=""><fa-icon [icon]="mugIcon"></fa-icon>
       Take A Sip</h2></li>
     <li *ngIf="loggedIn" style="float:right"> <h4 class="list" > {{greetings}}</h4></li>
-    <li style="float:right" (click)="logout()"> <h4 routerLink="/login">LOG OUT</h4></li>
-    <li style="float:right" class="sidebar-opener" (click)="sidebarShow = !sidebarShow"> <h4 class="list"><fa-icon [icon]="clipList"></fa-icon> Order List</h4></li>
+    <li *ngIf="loggedIn" style="float:right" (click)="logout()"> <h4 routerLink="/login">LOG OUT</h4></li>
+    <li *ngIf="!checkAdmin && loggedIn" style="float:right" class="sidebar-opener" (click)="sidebarShow = !sidebarShow"> <h4 class="list"><fa-icon [icon]="clipList"></fa-icon> Order List</h4></li>
   </ul>
 
 
@@ -25,7 +25,7 @@
       X
   </div>
 
-  <div class="sidebar-content">
+  <div *ngIf="loggedIn" class="sidebar-content">
      <app-list></app-list>
   </div>
 </div>

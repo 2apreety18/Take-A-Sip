@@ -6,6 +6,7 @@ import { SelectedFoodAttribute } from 'src/app/selectedFoodAttribute';
 import { FoodService } from 'src/app/food.service';
 import { FormBuilder } from '@angular/forms';
 import { NotificationService } from 'src/app/notification.service';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-food-page',
@@ -23,8 +24,7 @@ export class FoodPageComponent implements OnInit{
     noteArea: ''
   });
   
-  
- 
+   
 
 
   constructor(private route: ActivatedRoute,private foodService: FoodService, private fb: FormBuilder,private notificationService : NotificationService, private authRoute: Router) {}
@@ -93,18 +93,25 @@ export class FoodPageComponent implements OnInit{
   addToList(food: Food, selectedAttributes: SelectedFoodAttribute) {
     this.foodService.addToList(food, selectedAttributes);
    // window.alert('This order has been added to the list!');
-    this.notificationService.notifySuccess('Order added to the list!','☕️ SUCCESS')
+    this.notificationService.notifySuccess('Order added to the list!','☕️ SUCCESS');
     this.noteAreaForm.reset();
   }
-  
+
+  isValidQty() {
+    if(this.food && this.food.qty){
+      if(this.food.qty != 0 && this.food.qty >0 )
+        return true;
+    }
+    return false;
+  }
   plus(){
-  //  this.food?.qty = this.food?.qty+1;
+    if(this.food)
+        this.food.qty = this.food.qty + 1;
   }
   minus(){
-    // if(this.food?.qty != 0)
-    // {
-    //   this.food?.qty = this.food?.qty-1;
-    // }
+    if(this.food && this.food.qty > 0){
+        this.food.qty = this.food.qty-1;
+    }
   }
   
 

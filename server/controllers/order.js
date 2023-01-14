@@ -5,8 +5,14 @@ async function getOrders(req, res) {
     console.log(req.user);
     if (req.user && req.user.usertype === 'admin') {
       const orders = await Order.find({});
+
+      console.log(orders)
+
+      const clientOrders = orders.filter(order => order.user.order === 'CLIENT');
+      const selfOrders = orders.filter(order => order.user.order === 'SELF');
+
       res.status(200);
-      res.send(orders);
+      res.send([...clientOrders, ...selfOrders]);
     } else {
       res.status(403).send('You are not authorized.')
     }
@@ -56,4 +62,16 @@ async function updateOrderStatus(req, res) {
   }
 }
 
-module.exports = { getOrders, postOrder, updateOrderStatus }
+async function deleteOrder(req, res) {
+  try {
+    const { id } = req.params
+    const result = await Order.findByIdAndDelete(id);
+    res.status(200);
+    res.send(result);
+  } catch (error) {
+    res.status(500);
+    console.log(error);
+  }
+}
+
+module.exports = { getOrders, postOrder, updateOrderStatus, deleteOrder }
