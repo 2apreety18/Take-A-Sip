@@ -1,11 +1,11 @@
 import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Food } from 'src/app/food';
-import { Flavor } from 'src/app/flavor';
-import { SelectedFoodAttribute } from 'src/app/selectedFoodAttribute';
-import { FoodService } from 'src/app/food.service';
+import { Food } from 'src/app/interfaces/food';
+import { Flavor } from 'src/app/interfaces/flavor';
+import { SelectedFoodAttribute } from 'src/app/interfaces/selectedFoodAttribute';
+import { FoodService } from 'src/app/services/food.service';
 import { FormBuilder } from '@angular/forms';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/services/notification.service';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

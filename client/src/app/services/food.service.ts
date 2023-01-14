@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { FOODS } from './food-types';
-import { Food } from './food';
-import { SelectedFoodAttribute } from './selectedFoodAttribute';
-import { OrderList } from './orderlist';
+import { FOODS } from '../interfaces/food-types';
+import { Food } from '../interfaces/food';
+import { SelectedFoodAttribute } from '../interfaces/selectedFoodAttribute';
+import { OrderList } from '../interfaces/orderlist';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 
@@ -107,12 +107,14 @@ export class FoodService {
     Object.assign(foodRef,food);
     foodRef.selectedFlavor = selectedAttribute.flavor?.name
    
-    var found = this.findItemById(this.listItems, foodRef.id, foodRef.selectedFlavor!);
-    if (found) {
-      found.qty += foodRef.qty;
-    } else {
-      this.listItems.push(foodRef);
-    }
+    let found = this.findItemById(this.listItems, foodRef.id, foodRef.selectedFlavor!);
+    this.listItems.push(foodRef);
+
+    // if (found) {
+    //   found.qty += foodRef.qty;
+    // } else {
+    //   this.listItems.push(foodRef);
+    // }
 
   }
 
@@ -126,7 +128,6 @@ export class FoodService {
 
   clearList() {
     this.listItems = [];
-    console.log(this.listItems)
     return this.listItems;
   }
   

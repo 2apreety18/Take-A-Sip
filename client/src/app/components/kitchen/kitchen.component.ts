@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { OrderList } from 'src/app/orderlist';
-import { FoodService } from 'src/app/food.service';
+import { OrderList } from 'src/app/interfaces/orderlist';
+import { FoodService } from 'src/app/services/food.service';
 import { faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { formatDistance } from 'date-fns'
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-kitchen',
@@ -27,7 +28,7 @@ export class KitchenComponent implements OnInit {
    { addSuffix: true }
   );
 
-  constructor(private api: FoodService,private route: Router){}
+  constructor(private api: FoodService,private route: Router,private notificationService: NotificationService){}
   
   ngOnInit() : void {
     const userStr = localStorage.getItem('user');
@@ -80,6 +81,7 @@ export class KitchenComponent implements OnInit {
     // const deleteReadyOrder = this.ready.filter(order => order._id !== order._id)
     // this.ready = deleteReadyOrder;
     this.api.deleteOrder(id).subscribe(() => {});
+    this.notificationService.notifySuccess('Order removed from the list!','SUCCESS');
     this.refresh();
   }
 

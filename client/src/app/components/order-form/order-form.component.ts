@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FoodService } from 'src/app/food.service';
+import { FoodService } from 'src/app/services/food.service';
 import { FormBuilder} from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
-import { NotificationService } from 'src/app/notification.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 @Component({

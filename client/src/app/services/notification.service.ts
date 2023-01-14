@@ -14,7 +14,7 @@ export class NotificationService {
   }
   
   notifyError(message: string | undefined, title: string | undefined){
-    this.toastr.error(message, title)
+    this.toastr.error(message, title,{positionClass: 'toast-bottom-left'})
   }
   
   notifyInfo(message: string | undefined, title: string | undefined){

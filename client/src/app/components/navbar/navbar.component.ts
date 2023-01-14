@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@
 import { Router } from '@angular/router';
 import { faMugHot } from '@fortawesome/free-solid-svg-icons';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
-import { User } from 'src/app/user';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-navbar',

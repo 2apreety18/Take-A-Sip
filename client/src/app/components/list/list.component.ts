@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Food } from 'src/app/food';
-import { FoodService } from 'src/app/food.service';
+import { Food } from 'src/app/interfaces/food';
+import { FoodService } from 'src/app/services/food.service';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,7 @@ export class ListComponent {
   selectedItems = this.listService.getSelectedItems();  
 
    
-  constructor(private listService: FoodService, private route: Router) { }
+  constructor(private listService: FoodService, private route: Router,private fb: FormBuilder,) { }
 
     ngOnInit() {
       const userStr = localStorage.getItem('user');
