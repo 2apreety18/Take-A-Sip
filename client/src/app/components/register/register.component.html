@@ -8,9 +8,10 @@
     <div class="login-box">
       <h1><fa-icon [icon]="mugIcon"></fa-icon> Join Take A Sip</h1>
       <h4>Already have an account? <span routerLink="/login">Login</span></h4>
+      <div class="form-err-msg">{{errorMsg}}</div>
       <form [formGroup]= "regForm">
         <div class="user-box">
-          <input type="text" name="firstName" required="" formControlName="firstName">
+          <input type="text" name="firstName" required="" formControlName="firstName" required>
           <label>First Name</label>
         </div>
         <div class="user-box">
@@ -22,11 +23,15 @@
           <label>Designation</label>
         </div>
         <div class="user-box">
-          <input type="email" name="email" required="" formControlName="email">
+          <input type="email" name="email" required="" formControlName="email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" >
           <label>Email</label>
         </div>
         <div class="user-box">
-          <input type="password" name="password" required="" formControlName="password">
+          <input type="password" name="password" required="" formControlName="password" required>
+          <label>Password</label>
+        </div>
+        <div class="user-box">
+          <input type="password" name="confirmPassword" required="" formControlName="confirmPassword" required>
           <label>Password</label>
         </div>
         <a (click)="register()">

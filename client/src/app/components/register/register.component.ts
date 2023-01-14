@@ -11,12 +11,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit{
   mugIcon = faMugHot;
+  errorMsg : string = '';
+  
   regForm = this.fb.group({
     firstName: '',
     lastName: '',
     designation: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword:''
   });
    
   constructor(private fb: FormBuilder, private auth : AuthService, private router: Router){}
@@ -33,16 +36,46 @@ export class RegisterComponent implements OnInit{
     }
   }
   
+  // register() {
+  //   const val = this.regForm.value;
+  
+  //   if (val.firstName && val.lastName && val.designation && val.email && val.password) {
+  //       this.auth.register(val.firstName,val.lastName,val.designation,val.email,val.password).subscribe((res: any) => {
+  //         localStorage.setItem('accessToken', res.headers.get('authorization'));
+  //         localStorage.setItem('user', JSON.stringify(res.body.newUser));
+          
+  //         this.router.navigate(['home']);
+  //       });
+  //   }
+  // }
+
   register() {
     const val = this.regForm.value;
   
     if (val.firstName && val.lastName && val.designation && val.email && val.password) {
-        this.auth.register(val.firstName,val.lastName,val.designation,val.email,val.password).subscribe((res: any) => {
+      if (val.password.length < 6) {
+        this.errorMsg = 'Your password must be atleast 6 characters long.'
+      } else if (val.password != val.confirmPassword) {
+        this.errorMsg = "Your password doesn't match."
+      } else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val.email))) {
+        this.errorMsg = 'You have entered an invalid email address!'
+      }
+      else {
+        this.auth.register(val.firstName,val.lastName,val.designation,val.email,val.password).subscribe({
+          next: (res: any) => {
           localStorage.setItem('accessToken', res.headers.get('authorization'));
           localStorage.setItem('user', JSON.stringify(res.body.newUser));
           
           this.router.navigate(['home']);
-        });
+        },
+        error: error => this.errorMsg = error.error
+      });
     }
+    } else {
+      this.errorMsg = 'Please enter your information.'
+    }  
   }
+
+
+
 }

@@ -1,13 +1,14 @@
 <div class="login-box">
     <!-- <div class="logo"></div> -->
     <h2>LOG IN</h2>
+    <div class="form-err-msg">{{errorMsg}}</div>
     <form [formGroup]= "loginForm">
       <div class="user-box">
-        <input type="text" name="email" required="" formControlName="email">
+        <input type="text" name="email" required="" formControlName="email" required>
         <label>Email</label>
       </div>
       <div class="user-box">
-        <input type="password" name="password" required="" formControlName="password">
+        <input type="password" name="password" required="" formControlName="password" required>
         <label>Password</label>
       </div>
       <a (click)="login()">
@@ -19,6 +20,5 @@
       </a>
       <h4>Don’t have an account?</h4>
       <span routerLink="/register">Join Take A Sip</span>
-      <div>{{errorMsg}}</div>
     </form>
   </div>

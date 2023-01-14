@@ -19,7 +19,7 @@ loginForm = this.fb.group({
 
 errorMsg : string = '';
 
-@Output() loginEvent = new EventEmitter();
+// @Output() loginEvent = new EventEmitter();
  
 constructor(private fb: FormBuilder, private auth : AuthService, private router: Router){}
 
@@ -49,7 +49,7 @@ login() {
             localStorage.setItem('accessToken', res.headers.get('authorization'));
             localStorage.setItem('user', JSON.stringify(res.body.user));
     
-            this.loginEvent.emit(true)
+            // this.loginEvent.emit(true)
     
             if (res.body.user.usertype === 'admin') {
               this.router.navigate(['kitchen']);
