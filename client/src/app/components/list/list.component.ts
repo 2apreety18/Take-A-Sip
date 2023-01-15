@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Food } from 'src/app/interfaces/food';
 import { FoodService } from 'src/app/services/food.service';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 
@@ -12,6 +14,9 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ListComponent {
   trash = faTrashCan;
+  frontIcon = faArrowRightLong;
+  plusIcon = faPlus;
+
   listItems = this.listService.getListItems();
   selectedItems = this.listService.getSelectedItems();  
 

@@ -6,6 +6,10 @@ import { SelectedFoodAttribute } from 'src/app/interfaces/selectedFoodAttribute'
 import { FoodService } from 'src/app/services/food.service';
 import { FormBuilder } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification.service';
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-food-page',
@@ -14,8 +18,13 @@ import { NotificationService } from 'src/app/services/notification.service';
 })
 export class FoodPageComponent implements OnInit{
 
+  backIcon = faArrowLeftLong;
+  plusIcon = faPlus;
+  minusIcon = faMinus;
+
   imageUrl: string = '';
   food: Food | undefined;
+
   selectedAttributes: SelectedFoodAttribute = {
     flavor: undefined,
   };
@@ -89,7 +98,6 @@ export class FoodPageComponent implements OnInit{
 
   addToList(food: Food, selectedAttributes: SelectedFoodAttribute) {
     this.foodService.addToList(food, selectedAttributes);
-   // window.alert('This order has been added to the list!');
     this.notificationService.notifySuccess('Order added to the list!','☕️ SUCCESS');
     this.noteAreaForm.reset();
   }

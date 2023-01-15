@@ -20,20 +20,19 @@
       </div>
     </div>
 
-    <!-- <label>Quantity:</label> -->
-    <span class="minus" (click)="minus()">-</span>
+    <span class="minus" (click)="minus()"><fa-icon [icon]="minusIcon"></fa-icon></span>
     <input type="number" [(ngModel)]="food!.qty" value="1" class="qty">
-    <span class="plus" (click)="plus()">+</span>
+    <span class="plus" (click)="plus()"><fa-icon [icon]="plusIcon"></fa-icon></span>
 
-    <h5 class = "instructions">Special Instructions</h5>
     <form [formGroup]= "noteAreaForm">
-      <textarea type ="text"[(ngModel)]="food!.note" placeholder="e.g. sugar 2 teaspoon(tsp.) ..." class ="note-area" formControlName="noteArea" name="noteName" rows="5" cols="33"></textarea>
+      <textarea type ="text"[(ngModel)]="food!.note"
+       placeholder="Special instructions...&#10; e.g. sugar 2 teaspoon(tsp.)" class ="note-area" formControlName="noteArea" name="noteName" rows="5" cols="33"></textarea>
     </form>
 
   </div>
 
   <div class="action">
-    <button routerLink= "/home" > <-- </button> 
+    <button routerLink= "/home"><fa-icon [icon]="backIcon"></fa-icon></button> 
     <button (click)="addToList(food!,selectedAttributes)" *ngIf="isValidQty()"> ADD TO LIST </button> 
   </div>
   

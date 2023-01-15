@@ -55,7 +55,6 @@ export class OrderFormComponent implements OnInit{
 
   openDialog() {
     this.isDialogVisible = true;
-
   }
 
   closeDialog(e: any) {

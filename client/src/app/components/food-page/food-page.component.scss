@@ -15,7 +15,7 @@
   
   .food-page-card img {
     object-fit: contain;
-    max-height: 200px;
+    max-height: 240px;
   }
 
   .select-card {
@@ -28,11 +28,6 @@
     margin: 1rem;
   }
   
-
-  .instructions {
-    margin-bottom: 0;
-    margin-right: 10.5rem;
-  }
   
   .chip {
     border: 0;
@@ -50,7 +45,7 @@
     justify-content: center;
   }
 
-  span {cursor:pointer; }
+span {cursor:pointer; }
 
 .minus, .plus{
   width: 1rem;
@@ -63,6 +58,12 @@
   vertical-align: middle;
   text-align: center;
 }
+
+.minus:hover, .plus:hover {
+  cursor: pointer;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
 input{
   height:2rem;
   width: 6rem;
@@ -81,23 +82,46 @@ input{
   
 
  button {
-    padding: 0.5rem;
-    margin: 0.5rem;
-    width: fit-content;
-    font-weight: lighter;
     background-color: lightblue;
-    border: 1px solid lightblue;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s; 
+    border: 0;
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 10px 25px;
+    margin: 0.2rem;
+    letter-spacing: 1px;
+    color:  rgba(0, 0, 0, 0.6);
+    cursor: pointer;
  }
+
+
+ button:hover {
+  cursor: pointer;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
   
  .action {
     display: inline;
     text-align: center;
  }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+textarea {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 13px;
+  resize: none;
+}
+
  textarea::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
   background-color: #f5f5f5;
   box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);

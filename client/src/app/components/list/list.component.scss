@@ -19,21 +19,17 @@ table {
   }
   
   button {
-    // padding: 0.5rem;
-    // width: fit-content;
-    // font-weight: lighter;
-    // border: 1px solid white;
-    // border-radius: 1rem;
-    // box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    // transition: 0.3s; 
-
     border: 0;
     border-radius: 50px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     color: #fff;
-    font-size: 10px;
+    font-size: 14px;
     padding: 12px 25px;
     letter-spacing: 1px;
+  }
+
+  button:hover {
+    cursor: pointer;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
   }
   
   .action-area {
@@ -66,7 +62,7 @@ table {
   .card {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
     display: flex;
     margin: 0.5rem;
     overflow: hidden;
@@ -120,6 +116,15 @@ table {
     bottom: 20px;
     right: 30px;
   }
+
+
+input {
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
   
   
   @media screen and (max-width: 480px) {
