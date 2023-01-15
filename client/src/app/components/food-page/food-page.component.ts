@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Food } from 'src/app/interfaces/food';
 import { Flavor } from 'src/app/interfaces/flavor';
@@ -6,7 +6,6 @@ import { SelectedFoodAttribute } from 'src/app/interfaces/selectedFoodAttribute'
 import { FoodService } from 'src/app/services/food.service';
 import { FormBuilder } from '@angular/forms';
 import { NotificationService } from 'src/app/services/notification.service';
-import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-food-page',
@@ -23,8 +22,6 @@ export class FoodPageComponent implements OnInit{
   noteAreaForm = this.fb.group({
     noteArea: ''
   });
-  
-   
 
 
   constructor(private route: ActivatedRoute,private foodService: FoodService, private fb: FormBuilder,private notificationService : NotificationService, private authRoute: Router) {}

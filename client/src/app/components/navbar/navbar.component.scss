@@ -1,4 +1,4 @@
-ul {
+  ul {
     list-style-type: none;
     margin: 0 2rem;
     padding: 0;
@@ -13,7 +13,7 @@ ul {
     text-decoration: none;
     color: #A55B41;
   }
-  
+ 
   
   
   li h2:hover:not(.active) {
@@ -27,46 +27,3 @@ ul {
 
   //Sidebar part
 
-
-.sidebar-opener {
-  cursor: pointer;
-}
-
-.sidebar-slider {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  transform: translateX(100%);
-  transition: ease-in-out 300ms transform;
-  width: 25rem;
-  background-color: #e0e0e0;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.sidebar-slider.sidebar-slide-in {
-  transform: translateX(0%);
-  transition: ease-in-out 600ms transform;
-}
-
-.sidebar-close {
-  position: fixed;
-  top: 0;
-  right: 0;
-  color: black;
-  cursor: pointer;
-  padding: 16px;
-}
-
-.sidebar-content {
-  display: flex;
-  // align-items: center;
-  // justify-content: space-around;
-  flex-direction: column;
-  color: black;
-  // font-size: 16px;
-  padding: 0.2rem;
-  background-color: white;
-  height: 100%;
-}

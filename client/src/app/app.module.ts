@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -50,7 +51,8 @@ import { RegisterComponent } from './components/register/register.component';
     HttpClientModule,
     ToastrModule.forRoot(),
     MatCardModule,
-    MatListModule
+    MatListModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

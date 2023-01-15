@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { faMugHot } from '@fortawesome/free-solid-svg-icons';
 import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
 import { User } from 'src/app/interfaces/user';
+import { FoodService } from 'src/app/services/food.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,8 +22,9 @@ export class NavbarComponent implements OnInit {
   greetings?: String;
   
   public sidebarShow: boolean = false;
+  listItems = this.listService.getListItems();
 
-  constructor (private route: Router) {}
+  constructor (private listService: FoodService, private route: Router) {}
 
   ngOnInit() {
     this.checkAuthStatus();
