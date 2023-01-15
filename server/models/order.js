@@ -1,18 +1,12 @@
 const { model, Schema } = require('mongoose');
 const foodSchema = require('./food');
 
-//  user,
-//  [food],
-//  time
-
 const OrderSchema = new Schema({
     id: {
         type: Number,
     },
     user: {
         type: Object,
-        // required: true,
-        // unique: true
     },
     foods: [foodSchema],
     status: {
@@ -20,6 +14,9 @@ const OrderSchema = new Schema({
       default: 'created'
     },
     orderfor: {
+      type: String
+    },
+    room: {
       type: String
     },
     createdAt: {  

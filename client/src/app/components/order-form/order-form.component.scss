@@ -6,86 +6,92 @@
     color:red;
 }
 
-p {
-    font-family: Lato;
-  }
 
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  label {
-    font-weight: bold;
-  }
-  
-  .container {
-    max-width: 500px;
-    margin: 30px auto;
-    overflow: auto;
-    min-height: 300px;
-    padding: 30px;
-    border-radius: 5px;
-  }
-  .header {
-    align-items: center;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .btn {
-    display: inline-block;
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 15px;
-    font-family: inherit;
-  }
-  .btn:focus {
-    outline: none;
-  }
-  .btn:active {
-    transform: scale(0.98);
-  }
-  .btn-block {
-    display: block;
-    width: 100%;
-  }
- 
-  .add-form {
-    margin-bottom: 40px;
-  }
-  .form-control {
-    margin: 20px 0;
-  }
-  .form-control label {
-    display: block;
-  }
-  .form-control input {
-    width: 100%;
-    height: 40px;
-    margin: 5px;
-    padding: 3px 7px;
-    font-size: 17px;
-  }
-  .form-control-check {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .form-control-check label {
-    flex: 1;
-  }
-  .form-control-check input {
-    flex: 2;
-    height: 20px;
-  }
-  .select-section {
-    width: 10rem;
-    height: 2rem;
-  }
+.order-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.2);
+  border-radius: 10px;
+}
+
+.order-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #a55b41;
+  text-align: center;
+}
+
+.order-box .user-box {
+  position: relative;
+}
+
+.order-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: black;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #a55b41;
+  outline: none;
+  background: transparent;
+}
+.order-box .user-box label {
+  position: absolute;
+  top:0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #a55b41;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.order-box .user-box input:focus ~ label,
+.order-box .user-box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #a55b41;
+  font-size: 12px;
+}
+
+.select-section {
+  width: 15rem;
+  height: 2rem;
+  border-color: #a55b41;
+  color: #a55b41;
+}
+
+span {
+  color: #a55b41;
+}
+
+.btn {
+  display: inline-block;
+  background:  #a55b41;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: 2rem;
+  margin-left: 7rem;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}

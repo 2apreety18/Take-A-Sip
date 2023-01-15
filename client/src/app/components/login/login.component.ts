@@ -10,19 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit{
 
+errorMsg : string = '';
 loginForm = this.fb.group({
   email:'',
   password:''
-  // email: ['',Validators.required],
-  // password: ['',Validators.required]
 });
 
-errorMsg : string = '';
-
-// @Output() loginEvent = new EventEmitter();
- 
 constructor(private fb: FormBuilder, private auth : AuthService, private router: Router){}
-
 
 ngOnInit(): void {
   const userStr = localStorage.getItem('user');

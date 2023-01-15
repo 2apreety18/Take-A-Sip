@@ -1,92 +1,26 @@
-<div class="container add-form">
-  <h1 class="header">Enter Your Details</h1>
-	<form novalidate #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)" [formGroup]= "orderForm">
-		<div class="row">
-			<div class="inputsection form-group form-control">
-				<label> Room No & Details </label>
-				<input type="text" class="form-control" name="room" formControlName="room">
-			</div>
+
+<div class="order-box">
+  <h2 style="color: #a55b41;" class="header">Enter Your Details</h2>
+	 <h3> <span>Name:</span> {{user.firstName}} {{user.lastName}}</h3>
+	 <h3> <span>Designation:</span> {{user.designation}}</h3>
+	<form  [formGroup]= "orderForm">
+		<div class="user-box">
+			<input type="text" name="room" formControlName="room" required>
+			<label> Room No & Details </label>
 		</div>
 		
-		<div class="form-group form-control">
-			<label>Ordering For:</label>
-			<select class="form-control select-section" name="order" formControlName="order">
-        <option value="SELF">Self</option>
-        <option value="CLIENT">Client</option>
-      </select>
+		<label style="color: #a55b41; font-size:large"> Ordering For: </label>
+		<div class="user-box">
+			<select class="select-section" name="order" formControlName="order">
+        		<option value="SELF">Self</option>
+        		<option value="CLIENT">Client</option>
+      		</select>
 		</div>
 	
-		<button type="submit" class="btn btn-secondary" [disabled]="formRef.invalid">Submit</button>
+		<button class="btn"  mat-raised-button (click)="openDialog()" type="submit" class="btn btn-secondary">Submit</button>
+		<app-dialog *ngIf="isDialogVisible" (noEvent)="closeDialog($event)" (yesEvent)="dialogYes($event)"></app-dialog>
 	</form>
 </div>
 
-
-
-
-<!-- 
-<div class="container add-form">
-	<h1 class="header">Enter Your Details</h1>
-	  <form novalidate #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)" [formGroup]= "orderForm">
-		  <div class="row">
-			  <div class="inputsection form-control">
-				  <label>First name</label>
-				  <input type="text" class="form-control" name="firstName" ngModel #firstNameRef="ngModel" required [class.ctrl-error] = "firstNameRef.touched &&
-  firstNameRef?.errors?.['required']" minlength="3"> 
-		  <div *ngIf="firstNameRef.touched && firstNameRef?.errors?.['required']" class="error-message">
-			The first name is required.
-		  </div>
-  <div class="error-message" *ngIf="firstNameRef.touched && firstNameRef?.errors?.['minlength']">
-  You should enter minimum
-  {{firstNameRef?.errors?.['minlength'].requiredLength}}
-  characters into first name, but you entered only
-  {{firstNameRef?.errors?.['minlength'].actualLength}} character(s).
-  </div>
-			  </div>
-			  <div class="inputsection form-group form-control">
-				  <label>Last name</label>
-				  <input type="text" class="form-control" name="lastName" ngModel #lastNameRef="ngModel" required [class.ctrl-error] = "lastNameRef.touched &&
-		  lastNameRef?.errors?.['required']" minlength="3">
-			  </div>
-		  </div>
-	  <div class="form-group form-control">
-			  <label>Designation</label>
-			  <input type="designation" class="form-control" name="designation" ngModel #designationRef="ngModel">
-	  </div>
-	  <div class="form-group form-control">
-			  <label>Official Email</label>
-			  <input type="email" class="form-control" name="email" ngModel #emailRef="ngModel">
-	  </div>
-		  <div class="row">
-			  <div class="inputsection form-group">
-				  <label>Enter Password</label>
-				  <input type="password" class="form-control" name="password" ngModel #passwordRef="ngModel">
-			  </div>
-			  <div class="inputsectionform-group">
-				  <label>Confirm Password</label>
-				  <input type="password" class="form-control" name="confirmPassword" ngModel #confirmPassRef="ngModel">
-			  </div>
-		  </div> -->
-		  <!-- <div class="row">
-			  <div class="inputsection form-group form-control">
-				  <label> Room No & Details </label>
-				  <input type="text" class="form-control" name="room" ngModel #roomRef="ngModel">
-			  </div> -->
-			  <!-- <div class="inputsection form-group">
-				  <label>City</label>
-				  <input type="text" class="form-control" name="city" ngModel #cityRef="ngModel">
-			  </div> -->
-		  <!-- </div>
-		  
-		  <div class="form-group form-control">
-			  <label>Ordering For:</label>
-			  <select class="form-control select-section" name="order" ngModel="" #orderRef="ngModel">
-		  <option value="SELF">Self</option>
-		  <option value="CLIENT">Client</option>
-		</select>
-		  </div>
-	  
-		  <button type="submit" class="btn btn-secondary" [disabled]="formRef.invalid">Submit</button>
-	  </form>
-  </div> -->
   
   

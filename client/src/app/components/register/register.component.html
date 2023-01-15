@@ -9,6 +9,7 @@
       <h1><fa-icon [icon]="mugIcon"></fa-icon> Join Take A Sip</h1>
       <h4>Already have an account? <span routerLink="/login">Login</span></h4>
       <div class="form-err-msg">{{errorMsg}}</div>
+      
       <form [formGroup]= "regForm">
         <div class="user-box">
           <input type="text" name="firstName" required="" formControlName="firstName" required>
