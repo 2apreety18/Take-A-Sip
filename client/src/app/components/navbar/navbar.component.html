@@ -1,13 +1,5 @@
-  <!-- <ul>
-    <li><h2 class= "logo"routerLink=""><fa-icon [icon]="mugIcon"></fa-icon>
-      Take A Sip</h2></li>
-    <li *ngIf="loggedIn" style="float:right"> <h4 class="list" > {{greetings}}</h4></li>
-    <li style="float:right" (click)="logout()"> <h4 routerLink="/login">LOG OUT</h4></li>
-    <li style="float:right"> <h4 class="list" routerLink="/list"><fa-icon [icon]="clipList"></fa-icon> Order List</h4></li>
 
-  </ul> -->
-
-  <ul >
+ <ul >
     <li *ngIf="loggedIn"><h2 class= "logo"routerLink=""><fa-icon [icon]="mugIcon"></fa-icon>
       Take A Sip</h2></li>
     <li *ngIf="loggedIn" style="float:right" (click)="logout()"> <h4 routerLink="/login">LOG OUT</h4></li>

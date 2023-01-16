@@ -14,15 +14,6 @@
           [cdkDropListConnectedTo]="[progressList]"
           class="list"
           (cdkDropListDropped)="drop($event)">
-          <!-- <div class="box" *ngFor="let item of orders" cdkDrag>
-            {{item.user.firstName}}<br>
-            Room: {{item.user.room}}<br>
-             <p  *ngFor="let food of item.foods">
-              {{food.selectedFlavor | uppercase}} {{food.name}} Qty: {{food.qty}} <br>
-               Note: {{ food.note }}
-             </p>
-          </div> -->
-
        <div class="" *ngFor="let item of orders" cdkDrag>
 
           <mat-card class="example-card">
@@ -30,7 +21,6 @@
               <mat-card-title-group>
                 <mat-card-title>Order For: {{item.user.firstName}} {{item.user.lastName}}</mat-card-title>
                 <mat-card-subtitle>Room: {{item.room}} </mat-card-subtitle>
-                <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" time > -->
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content>
@@ -64,15 +54,6 @@
           class="list"
           (cdkDropListDropped)="drop($event)">
 
-          <!-- <div class="box" *ngFor="let item of inProgress" cdkDrag>
-            {{item.user.firstName}}<br>
-            Room: {{item.user.room}}<br>
-             <p  *ngFor="let food of item.foods">
-              {{food.selectedFlavor | uppercase}} {{food.name}} Qty: {{food.qty}} <br>
-               Note: {{ food.note }}
-             </p>
-          </div> -->
-
           <div class="" *ngFor="let item of inProgress" cdkDrag>
 
             <mat-card class="example-card">
@@ -80,7 +61,6 @@
                 <mat-card-title-group>
                   <mat-card-title>Order For: {{item.user.firstName}} {{item.user.lastName}}</mat-card-title>
                   <mat-card-subtitle>Room: {{item.room}} </mat-card-subtitle>
-                  <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" time > -->
                 </mat-card-title-group>
               </mat-card-header>
               <mat-card-content>
@@ -109,18 +89,6 @@
           [cdkDropListConnectedTo]="[progressList]"
             class="list"
           (cdkDropListDropped)="drop($event)">
-
-
-          <!-- <div class="box" *ngFor="let item of ready" cdkDrag>
-            {{item.user.firstName}}<br>
-            Room: {{item.user.room}}<br>
-             <p  *ngFor="let food of item.foods">
-              {{food.selectedFlavor | uppercase}} {{food.name}} Qty: {{food.qty}} <br>
-               Note: {{ food.note }}
-             </p>
-          </div>
-        </div> -->
-
         <div class="" *ngFor="let item of ready" cdkDrag>
           <mat-card class="example-card">
             <button class="btn remove"><fa-icon (click)="removeOrder(item._id)" [icon]="trash"></fa-icon></button>
@@ -128,7 +96,6 @@
               <mat-card-title-group>
                 <mat-card-title>Order For: {{item.user.firstName}} {{item.user.lastName}}</mat-card-title>
                 <mat-card-subtitle>Room: {{item.room}} </mat-card-subtitle>
-                <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" time > -->
               </mat-card-title-group>
             </mat-card-header>
             <mat-card-content>

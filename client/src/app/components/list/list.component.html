@@ -1,48 +1,5 @@
 <div class="container">
 <ng-container *ngIf="listItems.length !=0">
-    <!-- 
-          <div class="center">
-<div class="cart-table">
-        <table>
-          <thead>
-              <tr>
-                  <th>Sr.No</th>
-                  <th>Food Name</th>
-                  <th>Flavor</th>
-                  <th>Quantity</th>
-                  <th>Note</th>
-                  <th>Action</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let item of listItems; let i = index">
-                  <td>{{i+1}}</td>
-                  <td>{{item.name}}</td>
-                  <td style="width: 25%;">{{item.selectedFlavor}}</td>
-                  <td style="width: 12%;">{{item.qty}}</td>
-                  <td style="width: 12%;">{{item.note}}</td>
-                  <td>
-                      <fa-icon (click)="removeItem(item)" [icon]="trash"></fa-icon>
-                  </td>
-              </tr>
-              <tr>
-                  <td class = "btns"colspan="4"></td>
-                  <td><button (click)="emptyList()" class="empty-btn">EMPTY LIST</button></td>
-                  <td><button routerLink="/" class="add-btn">ADD MORE</button></td>
-                  <td><button routerLink="/order" class="order-btn">PROCEED TO ORDER</button></td>
-              </tr>
-          </tbody>
-      </table>  
-    </div> 
-  </div>
--->
-
-    <!-- <div class="card" *ngFor="let item of listItems; let i = index">
-        <span>{{item.selectedFlavor | uppercase}}</span>
-        <span>{{item.name}}</span> 
-        <span><fa-icon (click)="removeItem(item)" [icon]="trash"></fa-icon></span>
-    </div> -->
-
     <div class="card-container" *ngFor="let item of listItems; let i = index">
         <div class="card">
             <div class="card-info">

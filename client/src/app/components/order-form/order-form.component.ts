@@ -35,7 +35,7 @@ export class OrderFormComponent implements OnInit{
 
   onSubmit() {
     const val = this.orderForm.value;
-    this.http.post('http://localhost:6789/orders', {user: val, foods: this.listItems, status: 'created', orderfor: val.order, room: val.room})
+    this.http.post('http://localhost:6789/orders', {user: this.user, foods: this.listItems, status: 'created', orderfor: val.order, room: val.room})
     .subscribe({
       next: (response) => console.log(response),
       error: (error) => console.log(error),
