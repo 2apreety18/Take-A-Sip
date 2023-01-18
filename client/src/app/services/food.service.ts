@@ -6,6 +6,7 @@ import { SelectedFoodAttribute } from '../interfaces/selectedFoodAttribute';
 import { OrderList } from '../interfaces/orderlist';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { User } from '../interfaces/user';
 
 
 @Injectable({
@@ -17,7 +18,6 @@ export class FoodService {
   
   listItems: Food[] = [];
   selectedAttribute:  SelectedFoodAttribute[] = [];
-//private http: HttpClient
 
   constructor(private http: HttpClient) { }
 
@@ -33,14 +33,13 @@ export class FoodService {
     return this.http.get<OrderList[]>(this.url, httpOptions);
   }
   
-  //param: form value,listItem
-  addOrder () : Observable<OrderList> {
+  addOrder (user: User, foods: Food[], status: string, orderfor: string, room: string) : Observable<OrderList> {
     const httpOptions = {
       headers: {
         'Content-Type': 'application/json'
       }
     };
-    return this.http.post<OrderList>(this.url, httpOptions);
+    return this.http.post<OrderList>(this.url,{ user, foods, status, orderfor,room}, httpOptions);
   }
 
 
@@ -78,15 +77,8 @@ export class FoodService {
     return of(food);    
   }
 
-  // getFood(id: number): Food | undefined{
-  //   const food = FOODS.find(food => food.id === id);
-  //  // console.log(food);
-  //   return food;
-  // }
-
  
- 
-  //List Part
+  /*List Part*/
   findItemById(listItems: any, id: number,selectedFlavor: string) {
     return listItems.find(function(item: { id: number,selectedFlavor: string }) {
       return item.id === id && item.selectedFlavor === selectedFlavor;
@@ -106,16 +98,7 @@ export class FoodService {
   };
     Object.assign(foodRef,food);
     foodRef.selectedFlavor = selectedAttribute.flavor?.name
-   
-    let found = this.findItemById(this.listItems, foodRef.id, foodRef.selectedFlavor!);
     this.listItems.push(foodRef);
-
-    // if (found) {
-    //   found.qty += foodRef.qty;
-    // } else {
-    //   this.listItems.push(foodRef);
-    // }
-
   }
 
   getListItems() {

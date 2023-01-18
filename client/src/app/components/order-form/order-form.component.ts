@@ -4,8 +4,6 @@ import { FormBuilder} from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { NotificationService } from 'src/app/services/notification.service';
 import { User } from 'src/app/interfaces/user';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
 
 
 @Component({
@@ -35,11 +33,7 @@ export class OrderFormComponent implements OnInit{
 
   onSubmit() {
     const val = this.orderForm.value;
-    this.http.post('http://localhost:6789/orders', {user: this.user, foods: this.listItems, status: 'created', orderfor: val.order, room: val.room})
-    .subscribe({
-      next: (response) => console.log(response),
-      error: (error) => console.log(error),
-    });
+    this.listService.addOrder(this.user,this.listItems,'created',val.order!,val.room!).subscribe(()=>{});
     this.notificationService.notifySuccess('Successfully submitted your order!','Congrats 🎉')
     this.orderForm.reset();
     this.listItems.length = 0;
@@ -49,11 +43,11 @@ export class OrderFormComponent implements OnInit{
     this.isDialogVisible = true;
   }
 
-  closeDialog(e: any) {
+  closeDialog(e: Event) {
     this.isDialogVisible = false;
   }
 
-  dialogYes(e: any) {
+  dialogYes(e: Event) {
     this.onSubmit();
     this.isDialogVisible = false;
   }
