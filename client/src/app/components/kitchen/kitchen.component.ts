@@ -33,9 +33,7 @@ export class KitchenComponent implements OnInit {
   ngOnInit() : void {
     const userStr = localStorage.getItem('user');
     const user = userStr ? JSON.parse(userStr) : null;
-    if (user.usertype !== 'admin') {
-      this.route.navigate(['home']);
-    }
+   
     this.getOrders();
     setInterval(() => this.getRefreshTime(), 1000);
   }
@@ -76,10 +74,6 @@ export class KitchenComponent implements OnInit {
     this.ready.length = 0;    
   }
   removeOrder(id: string) {
-  //  let index = this.ready.indexOf(order);
-  //  this.ready.splice(index,1);
-    // const deleteReadyOrder = this.ready.filter(order => order._id !== order._id)
-    // this.ready = deleteReadyOrder;
     this.api.deleteOrder(id).subscribe(() => {});
     this.notificationService.notifySuccess('Order removed from the list!','SUCCESS');
     this.refresh();

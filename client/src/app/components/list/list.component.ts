@@ -27,11 +27,6 @@ export class ListComponent {
       const userStr = localStorage.getItem('user');
       const user = userStr ? JSON.parse(userStr) : null;
 
-      if (!user) {
-        this.route.navigate(['login']);
-      } else if (user.usertype === 'admin') {
-        this.route.navigate(['kitchen']);
-      }
     }
 
     emptyList() {

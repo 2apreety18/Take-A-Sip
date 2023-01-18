@@ -26,6 +26,10 @@ export class AuthService {
     let authToken = localStorage.getItem('accessToken');
     return authToken !== null ? true : false;
   }
+  get getUser(): any {
+    let userStr = localStorage.getItem('user');
+    return userStr !== null ? JSON.parse(userStr) : false;
+  }
 
  
   handleError(error: HttpErrorResponse) {

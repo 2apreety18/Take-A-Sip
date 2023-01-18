@@ -28,7 +28,7 @@ export class OrderFormComponent implements OnInit{
   ngOnInit () {
     const userStr = localStorage.getItem('user');
     this.user = userStr ? JSON.parse(userStr) : undefined;
-    // this.greetings = 'Hi ' + this.user?.lastName + '!';
+   
   }
 
   constructor(private listService: FoodService, private fb: FormBuilder,private http: HttpClient,private notificationService: NotificationService) { }
@@ -44,14 +44,6 @@ export class OrderFormComponent implements OnInit{
     this.orderForm.reset();
     this.listItems.length = 0;
   }
-
-  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-  //   this.dialog.open(DialogComponent, {
-  //     width: '250px',
-  //     enterAnimationDuration,
-  //     exitAnimationDuration,
-  //   });
-  // }
 
   openDialog() {
     this.isDialogVisible = true;

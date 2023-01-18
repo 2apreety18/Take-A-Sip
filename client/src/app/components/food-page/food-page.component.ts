@@ -49,19 +49,7 @@ export class FoodPageComponent implements OnInit{
     const userStr = localStorage.getItem('user');
     const user = userStr ? JSON.parse(userStr) : null;
 
-    if (!user) {
-      this.authRoute.navigate(['login']);
-    } else if (user.usertype === 'admin') {
-      this.authRoute.navigate(['kitchen']);
-    }
   }
-
-  // getFood(): void {
-  //   const id = Number(this.route.snapshot.paramMap.get('id'));
-  //   this.foodService
-  //     .getFood(id)
-  //     .subscribe((food) => (this.food = food)); 
-  // }
 
   getFood(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));

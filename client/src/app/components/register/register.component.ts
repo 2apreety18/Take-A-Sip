@@ -35,19 +35,6 @@ export class RegisterComponent implements OnInit{
       }
     }
   }
-  
-  // register() {
-  //   const val = this.regForm.value;
-  
-  //   if (val.firstName && val.lastName && val.designation && val.email && val.password) {
-  //       this.auth.register(val.firstName,val.lastName,val.designation,val.email,val.password).subscribe((res: any) => {
-  //         localStorage.setItem('accessToken', res.headers.get('authorization'));
-  //         localStorage.setItem('user', JSON.stringify(res.body.newUser));
-          
-  //         this.router.navigate(['home']);
-  //       });
-  //   }
-  // }
 
   register() {
     const val = this.regForm.value;

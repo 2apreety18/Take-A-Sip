@@ -7,16 +7,19 @@ import { KitchenComponent } from './components/kitchen/kitchen.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './services/auth.guard';
+import { AdminGuard } from './services/admin.guard';
 
 const routes: Routes = [
   {path: "register", component: RegisterComponent},
   {path: "login", component: LoginComponent},
-  {path: "kitchen", component: KitchenComponent},
-  {path: "food/:id", component: FoodPageComponent},
-  {path: "order", component: OrderFormComponent},
-  {path: "list", component: ListComponent},
-  {path: "home", component: HomeComponent},
-  {path: "**", component: HomeComponent}
+  {path: "kitchen", component: KitchenComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: "food/:id", component: FoodPageComponent, canActivate: [AuthGuard]},
+  {path: "order", component: OrderFormComponent, canActivate: [AuthGuard]},
+  {path: "list", component: ListComponent, canActivate: [AuthGuard]},
+  {path: "home", component: HomeComponent, canActivate: [AuthGuard]},
+  {path: '', redirectTo: "register", pathMatch: "full"},
+  {path: "**", component: HomeComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
