@@ -23,7 +23,15 @@
 
   li h4:hover:not(.active) {
     color: black;
+    background: white;
   }
 
-  //Sidebar part
-
+ .kitchen {
+  border-radius: 50%;
+  padding: 5px 10px;
+  color: white;
+  font-size: 0.9rem;
+ // margin-top: 0.2rem; 
+  font-weight: normal;
+  background-color: #A55B41;
+ }

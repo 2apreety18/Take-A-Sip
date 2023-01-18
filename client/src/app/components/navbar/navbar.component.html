@@ -1,10 +1,11 @@
 
  <ul >
-    <li *ngIf="loggedIn"><h2 class= "logo"routerLink=""><fa-icon [icon]="mugIcon"></fa-icon>
+    <li *ngIf="loggedIn"><h2 class= "logo"routerLink="/home"><fa-icon [icon]="mugIcon"></fa-icon>
       Take A Sip</h2></li>
     <li *ngIf="loggedIn" style="float:right" (click)="logout()"> <h4 routerLink="/login">LOG OUT</h4></li>
     <li *ngIf="loggedIn" style="float:right"> <h4 class="list" > {{greetings}}</h4></li>
     <li *ngIf="loggedIn" style="float:right" class="sidebar-opener" (click)="sidebarShow = !sidebarShow"> <h4 matBadge="{{listItems.length}}" matBadgePosition="before" matBadgeColor="warn" class="list"><fa-icon [icon]="clipList"></fa-icon> Order List</h4></li>
+    <li *ngIf="checkAdmin && loggedIn"> <h4  style="float:left;" class="kitchen" routerLink="/kitchen"> Kitchen </h4></li>
     <!-- <li *ngIf="!checkAdmin && loggedIn" style="float:right" class="sidebar-opener" (click)="sidebarShow = !sidebarShow"> <h4 matBadge="{{listItems.length}}" matBadgePosition="before" matBadgeColor="warn" class="list"><fa-icon [icon]="clipList"></fa-icon> Order List</h4></li> -->
 
   </ul>
