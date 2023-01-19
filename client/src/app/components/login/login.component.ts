@@ -19,6 +19,8 @@ loginForm = this.fb.group({
 constructor(private fb: FormBuilder, private auth : AuthService, private router: Router){}
 
 ngOnInit(): void {
+
+  //If logged in, not letting go to login page --> redirecting to own home
   const userStr = localStorage.getItem('user');
   if (userStr) {
     const user = JSON.parse(userStr);
@@ -43,9 +45,8 @@ login() {
             localStorage.setItem('accessToken', res.headers.get('authorization'));
             console.log(res.headers.get('authorization'));
             localStorage.setItem('user', JSON.stringify(res.body.user));
-    
-            // this.loginEvent.emit(true)
-    
+            
+            /*For going to page after loggin in without reload */
             if (res.body.user.usertype === 'admin') {
               this.router.navigate(['kitchen']);
     
