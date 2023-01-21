@@ -18,23 +18,22 @@ export class ListComponent {
   plusIcon = faPlus;
 
   listItems = this.listService.getListItems();
-  selectedItems = this.listService.getSelectedItems();  
-
+  selectedItems = this.listService.getSelectedItems(); 
    
   constructor(private listService: FoodService, private route: Router,private fb: FormBuilder,) { }
 
     ngOnInit() {
       const userStr = localStorage.getItem('user');
-      const user = userStr ? JSON.parse(userStr) : null;
-
+      const user = userStr ? JSON.parse(userStr) : null; 
     }
 
     emptyList() {
-      this.listItems.length = 0;    
+      this.listService.clearList();
     }
     removeItem(food: Food) {
      let index = this.listItems.indexOf(food);
      this.listItems.splice(index,1);
+     this.listService.removeSelectedItems();
     }
 
    

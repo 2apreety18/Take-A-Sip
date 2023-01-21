@@ -5,7 +5,7 @@ import { Food } from '../interfaces/food';
 import { SelectedFoodAttribute } from '../interfaces/selectedFoodAttribute';
 import { OrderList } from '../interfaces/orderlist';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http'
 import { User } from '../interfaces/user';
 
 
@@ -99,18 +99,32 @@ export class FoodService {
     Object.assign(foodRef,food);
     foodRef.selectedFlavor = selectedAttribute.flavor?.name
     this.listItems.push(foodRef);
+    localStorage.setItem('list', JSON.stringify(this.listItems));
+    localStorage.setItem('selectedItems', JSON.stringify(this.selectedAttribute));
   }
 
   getListItems() {
-    return this.listItems;
+    if(localStorage.getItem('list')){
+      this.listItems = JSON.parse(localStorage.getItem('list') || '[]');
+    }
+   return this.listItems;
   }
   
   getSelectedItems() {
+    if(localStorage.getItem('selectedItems')){
+      this.selectedAttribute = JSON.parse(localStorage.getItem('selectedItems') || '[]');
+    }
     return this.selectedAttribute;
   }
 
+  removeSelectedItems() {
+    localStorage.setItem('list', JSON.stringify(this.listItems));
+  }
+
   clearList() {
-    this.listItems = [];
+    this.listItems.length = 0;
+    localStorage.removeItem('list');
+    localStorage.removeItem('selectedItems');
     return this.listItems;
   }
   
