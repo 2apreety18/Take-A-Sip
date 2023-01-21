@@ -4,11 +4,11 @@
         <div class="card">
             <div class="card-info">
                 <div class="right-container" style="color: #A55B41;">
-                   Qty: <input type="number" class="qtyHolder" [(ngModel)]="item.qty"  min="1" >
+                   Qty: <input type="number" class="qtyHolder" [(ngModel)]="item.qty"  min="1" (ngModelChange)="onChange()">
                 </div>
                 <h2>{{item.name}}</h2>
                 <h5>Flavor: {{item.selectedFlavor | uppercase}}</h5>
-                <h5><input class="noteHolder" [(ngModel)]="item.note" placeholder="Notes..."></h5>
+                <h5><input class="noteHolder" [(ngModel)]="item.note" placeholder="Notes..." (ngModelChange)="onChange()"></h5>
                 <button class="btn remove"><fa-icon (click)="removeItem(item)" [icon]="trash"></fa-icon>
                 </button>
             </div>

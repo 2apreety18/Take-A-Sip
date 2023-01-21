@@ -15,6 +15,7 @@ export class OrderFormComponent implements OnInit{
   
   errorMsg : string = '';
   listItems = this.listService.getListItems();
+
   orderForm = this.fb.group({
     room:'',
     order:''
@@ -25,8 +26,7 @@ export class OrderFormComponent implements OnInit{
 
   ngOnInit () {
     const userStr = localStorage.getItem('user');
-    this.user = userStr ? JSON.parse(userStr) : undefined;
-   
+    this.user = userStr ? JSON.parse(userStr) : null;
   }
 
   constructor(private listService: FoodService, private fb: FormBuilder,private http: HttpClient,private notificationService: NotificationService) { }
@@ -36,7 +36,7 @@ export class OrderFormComponent implements OnInit{
     this.listService.addOrder(this.user,this.listItems,'created',val.order!,val.room!).subscribe(()=>{});
     this.notificationService.notifySuccess('Successfully submitted your order!','Congrats 🎉')
     this.orderForm.reset();
-    this.listItems.length = 0;
+    this.listService.clearList();
   }
 
   openDialog() {

@@ -21,7 +21,7 @@ export class FoodService {
 
   constructor(private http: HttpClient) { }
 
-  //Data passing with Api
+  /*Data passing with Api*/
   getAllOrders(): Observable<OrderList[]> {
     const token = localStorage.getItem('accessToken');
     const httpOptions = {
@@ -66,7 +66,7 @@ export class FoodService {
     return this.http.delete<OrderList>(this.url + `/${id}`,httpOptions);
   }
   
-  //Food Sections
+  /*Food Sections*/
   getFoods(): Food[] {
     return FOODS;
   }
@@ -107,7 +107,7 @@ export class FoodService {
     if(localStorage.getItem('list')){
       this.listItems = JSON.parse(localStorage.getItem('list') || '[]');
     }
-   return this.listItems;
+    return this.listItems;
   }
   
   getSelectedItems() {
@@ -118,6 +118,10 @@ export class FoodService {
   }
 
   removeSelectedItems() {
+    localStorage.setItem('list', JSON.stringify(this.listItems));
+  }
+
+  updateSelectedItems() {
     localStorage.setItem('list', JSON.stringify(this.listItems));
   }
 

@@ -18,7 +18,6 @@ export class ListComponent {
   plusIcon = faPlus;
 
   listItems = this.listService.getListItems();
-  selectedItems = this.listService.getSelectedItems(); 
    
   constructor(private listService: FoodService, private route: Router,private fb: FormBuilder,) { }
 
@@ -35,6 +34,8 @@ export class ListComponent {
      this.listItems.splice(index,1);
      this.listService.removeSelectedItems();
     }
-
+    onChange() {
+      this.listService.updateSelectedItems();
+    }
    
 }
