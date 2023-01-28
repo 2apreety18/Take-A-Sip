@@ -10,12 +10,7 @@
         *ngFor="let flavor of food?.flavors"
         class="chip"
         [style.background-color]="flavor.color"
-        (click)="
-          updateSelectedFoodAttributes(
-            flavor          
-          )
-        "
-      >
+        (click)="updateSelectedFoodAttributes(flavor)">
         {{ flavor.name | uppercase }}
       </div>
     </div>
@@ -26,7 +21,10 @@
 
     <form [formGroup]= "noteAreaForm">
       <textarea type ="text"[(ngModel)]="food!.note"
-       placeholder="Special instructions...&#10; e.g. sugar 2 teaspoon(tsp.)" class ="note-area" formControlName="noteArea" name="noteName" rows="5" cols="33"></textarea>
+       placeholder="Special instructions...&#10;e.g. sugar 2 teaspoon(tsp.)" 
+       class ="note-area" formControlName="noteArea" name="noteName" 
+       rows="5" cols="33">
+      </textarea>
     </form>
 
   </div>

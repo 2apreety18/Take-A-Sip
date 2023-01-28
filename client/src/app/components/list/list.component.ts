@@ -32,10 +32,10 @@ export class ListComponent {
     removeItem(food: Food) {
      let index = this.listItems.indexOf(food);
      this.listItems.splice(index,1);
-     this.listService.removeSelectedItems();
+     //this.listService.removeSelectedItems();
     }
     onChange() {
-      this.listService.updateSelectedItems();
+     // this.listService.updateSelectedItems();
     }
    
 }

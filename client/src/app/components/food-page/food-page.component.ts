@@ -53,9 +53,7 @@ export class FoodPageComponent implements OnInit{
 
   getFood(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.foodService
-    .getFood(id)
-      .subscribe((food) => (this.food = food)); 
+    this.foodService.getFood(id).subscribe((food) => (this.food = food)); 
   }
 
 

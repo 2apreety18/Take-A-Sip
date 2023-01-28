@@ -66,14 +66,13 @@ export class FoodService {
     return this.http.delete<OrderList>(this.url + `/${id}`,httpOptions);
   }
   
-  /*Food Sections*/
+  /*Food Section*/
   getFoods(): Food[] {
     return FOODS;
   }
 
    getFood(id: number): Observable<Food | undefined> {
     const food = FOODS.find(food => food.id === id);
-    console.log(food)
     return of(food);    
   }
 
@@ -86,7 +85,6 @@ export class FoodService {
   };
 
   addToList(food: Food, selectedAttribute: SelectedFoodAttribute) {
-
   let foodRef: Food = {
     id: 0,
     name: '',
@@ -99,21 +97,21 @@ export class FoodService {
     Object.assign(foodRef,food);
     foodRef.selectedFlavor = selectedAttribute.flavor?.name
     this.listItems.push(foodRef);
-    localStorage.setItem('list', JSON.stringify(this.listItems));
-    localStorage.setItem('selectedItems', JSON.stringify(this.selectedAttribute));
+    // localStorage.setItem('list', JSON.stringify(this.listItems));
+    // localStorage.setItem('selectedItems', JSON.stringify(this.selectedAttribute));
   }
 
   getListItems() {
-    if(localStorage.getItem('list')){
-      this.listItems = JSON.parse(localStorage.getItem('list') || '[]');
-    }
+    // if(localStorage.getItem('list')){
+    //   this.listItems = JSON.parse(localStorage.getItem('list') || '[]');
+    // }
     return this.listItems;
   }
   
   getSelectedItems() {
-    if(localStorage.getItem('selectedItems')){
-      this.selectedAttribute = JSON.parse(localStorage.getItem('selectedItems') || '[]');
-    }
+    // if(localStorage.getItem('selectedItems')){
+    //   this.selectedAttribute = JSON.parse(localStorage.getItem('selectedItems') || '[]');
+    // }
     return this.selectedAttribute;
   }
 
@@ -127,8 +125,8 @@ export class FoodService {
 
   clearList() {
     this.listItems.length = 0;
-    localStorage.removeItem('list');
-    localStorage.removeItem('selectedItems');
+    // localStorage.removeItem('list');
+    // localStorage.removeItem('selectedItems');
     return this.listItems;
   }
   
